@@ -19,7 +19,7 @@ const HomePage = () => {
                 <b className="md:font-semibold">“FLOWER CENTER MONGOLIA”</b>{" "}
                 Цэцэг төв нь Монгол улсын анхны цэцгийн дэлгүүр болон мэндэлсэн
                 цагаас таны аз жаргалтай мөч бүхэнтэй хамт байгаадаа бид үргэлж
-                баяртай байдаг шү"
+                баяртай байдаг юм"
               </span>
             </div>
             <div className="flex w-screen justify-between absolute ">
