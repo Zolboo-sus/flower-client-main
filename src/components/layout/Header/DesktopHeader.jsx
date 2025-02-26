@@ -11,7 +11,7 @@ const DesktopHeader = () => {
   const menuItems = [
     { name: "Баглаа", id: "occasion" },
     { name: "Flowers", id: "flowers" },
-    { name: "Bouquets", id: "bouquets" },
+  
     { name: "Plants", id: "plants" },
     { name: "Gifts", id: "gift" },
     { name: "Sale", id: "d" },
