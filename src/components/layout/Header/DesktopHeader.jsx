@@ -9,7 +9,7 @@ const DesktopHeader = () => {
 
   // Menu items array
   const menuItems = [
-    { name: "Occasion", id: "occasion" },
+    { name: "Баглаа", id: "occasion" },
     { name: "Flowers", id: "flowers" },
     { name: "Bouquets", id: "bouquets" },
     { name: "Plants", id: "plants" },
