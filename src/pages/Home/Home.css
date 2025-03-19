@@ -1,6 +1,113 @@
-@media (min-width: 1600px) {
-    .custom-lg {
-      font-size: 2rem;
+/* General styles for the HomePage */
+.home-container {
+    overflow: hidden;
+    background-color: #f7f7f7;
+  }
+  
+  /* Main Section Styles */
+  .hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcd7d7;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 2rem 0;
+  }
+  
+  .hero-content {
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    margin-top: -15vw;
+  }
+  
+  .hero-text {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .hero-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.4;
+    margin-top: 1rem;
+  }
+  
+  .hero-image-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    z-index: 0;
+  }
+  
+  .hero-image {
+    position: absolute;
+    top: -15vw;
+    width: 25%;
+  }
+  
+  .hero-image.left {
+    left: 0;
+  }
+  
+  .hero-image.right {
+    right: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-image-container {
+      padding: 0 5%;
+    }
+  
+    .hero-image {
+      width: 30%;
+      top: -10vw;
+    }
+  
+    .hero-heading {
+      font-size: 1.5rem;
+    }
+  
+    .hero-text {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Section styles for product sliders */
+  section {
+    padding: 3rem 0;
+    background-color: #ffffff;
+  }
+  
+  section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  section p {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    section h2 {
+      font-size: 1.5rem;
+    }
+  
+    section p {
+      font-size: 0.9rem;
     }
   }
   

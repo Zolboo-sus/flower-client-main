@@ -11,36 +11,44 @@ import { ThemeProvider } from "@material-tailwind/react";
 const HomePage = () => {
   return (
     <ThemeProvider>
-      <div className="overflow-hidden">
-        <div className="w-full mt-6 md:mt-12 flex items-end">
-          <div className="relative w-full md:h-[18vw] flex justify-center md:items-center bg-[#fcd7d7] rounded-lg shadow-lg">
-            <div className="w-[90%] sm:w-[75%] md:w-[50%]">
-             <span className="text-sm sm:text-base lg:text-lg custom-lg">Your text here</span>
-              <span className="text-xs sm:text-sm md:text-base lg:text-lg font-sans leading-normal">
-                <b className="md:font-semibold">“FLOWER CENTER MONGOLIA”</b>{" "}
-                Цэцэг төв нь Монгол улсын анхны цэцгийн дэлгүүр болон мэндэлсэн
-                цагаас таны аз жаргалтай мөч бүхэнтэй хамт байгаадаа бид үргэлж
-                баяртай байдаг байгаа
-              </span>
-            </div>
-            <div className="flex w-screen justify-between absolute">
-              <img
-                src={Baantag}
-                alt="Baantag image"
-                className="absolute left-0 top-[-15vw] sm:left-[2vw] md:left-[0.7vw] md:top-[-16vw] w-[40%] sm:w-[30%] md:w-[20%]"
-              />
-              <img
-                src={flower}
-                alt="Flower decoration"
-                className="absolute right-0 top-[-5vw] sm:top-[-10vw] md:top-[-9vw] w-[30%] sm:w-[25%] md:w-[18%]"
-              />
-            </div>
+      <div className="home-container">
+        <div className="hero-section">
+          <div className="hero-content">
+            <span className="hero-heading">Your text here</span>
+            <span className="hero-text">
+              <b>“FLOWER CENTER MONGOLIA”</b>{" "}
+              Цэцэг төв нь Монгол улсын анхны цэцгийн дэлгүүр болон
+              мэндэлсэн цагаас таны аз жаргалтай мөч бүхэнтэй хамт
+              байгаадаа бид үргэлж баяртай байдаг байгаа
+            </span>
+          </div>
+          <div className="hero-image-container">
+            <img
+              src={Baantag}
+              alt="Baantag image"
+              className="hero-image left"
+            />
+            <img
+              src={flower}
+              alt="Flower decoration"
+              className="hero-image right"
+            />
           </div>
         </div>
-        <section className="bg-white py-6 md:py-12">
+        <section>
+          <h2>Birthday Bouquets</h2>
           <Birthday />
+        </section>
+        <section>
+          <h2>Special Bouquets</h2>
           <Special />
+        </section>
+        <section>
+          <h2>Mother's Day Bouquets</h2>
           <Mother />
+        </section>
+        <section>
+          <h2>Gifts</h2>
           <Gifts />
         </section>
       </div>
