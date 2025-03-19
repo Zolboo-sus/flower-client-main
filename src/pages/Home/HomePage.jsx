@@ -14,8 +14,8 @@ const HomePage = () => {
       <div className="overflow-hidden">
         <div className="w-full mt-6 md:mt-12 flex items-end">
           <div className="relative w-full md:h-[18vw] flex justify-center md:items-center bg-[#fcd7d7] rounded-lg shadow-lg">
-            <div className="w-[50%]">
-              <span className="text-sm sm:text-base lg:text-lg font-sans leading-normal">
+            <div className="w-[90%] sm:w-[75%] md:w-[50%]">
+              <span className="text-xs sm:text-sm md:text-base lg:text-lg font-sans leading-normal">
                 <b className="md:font-semibold">“FLOWER CENTER MONGOLIA”</b>{" "}
                 Цэцэг төв нь Монгол улсын анхны цэцгийн дэлгүүр болон мэндэлсэн
                 цагаас таны аз жаргалтай мөч бүхэнтэй хамт байгаадаа бид үргэлж
@@ -26,12 +26,12 @@ const HomePage = () => {
               <img
                 src={Baantag}
                 alt="Baantag image"
-                className="absolute left-0 top-[-15vw] md:left-[1vw] md:top-[-20vw] w-[30%] md:w-[20%]"
+                className="absolute left-0 top-[-15vw] sm:left-[2vw] md:left-[0.7vw] md:top-[-16vw] w-[40%] sm:w-[30%] md:w-[20%]"
               />
               <img
                 src={flower}
                 alt="Flower decoration"
-                className="absolute right-0 top-[-5vw] md:h-[18vw] md:top-[-9vw] md:right-[0.6vw]"
+                className="absolute right-0 top-[-5vw] sm:top-[-10vw] md:top-[-9vw] w-[30%] sm:w-[25%] md:w-[18%]"
               />
             </div>
           </div>
