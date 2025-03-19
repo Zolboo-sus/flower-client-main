@@ -5,6 +5,7 @@ import QRCode from "react-qr-code";
 import axios from "axios";
 import { useCart } from "../../context/CartContext";
 import LoaderButton from "../../components/Button/LoaderButton";
+import "./Payment.css";
 
 const Payment = () => {
   const { qr, invoiceId, orderId } = useParams();
