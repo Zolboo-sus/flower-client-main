@@ -1,7 +1,7 @@
 import React from "react";
 import Baantag from "../../assets/baantag.png";
 import flower from "../../assets/flower1.png";
-import "./Home.css";  // This imports the CSS file we just edited.
+import "./Home.css";
 import Birthday from "../../components/slider/BirthdayBouquets";
 import Special from "../../components/slider/SpecialBouquets";
 import Mother from "../../components/slider/MothersDay";
@@ -12,6 +12,7 @@ const HomePage = () => {
   return (
     <ThemeProvider>
       <div className="home-container">
+        {/* Hero Section */}
         <div className="hero-section">
           <div className="hero-content">
             <span className="hero-heading">Your text here</span>
@@ -35,6 +36,8 @@ const HomePage = () => {
             />
           </div>
         </div>
+
+        {/* Product Sections */}
         <section>
           <h2>Birthday Bouquets</h2>
           <Birthday />

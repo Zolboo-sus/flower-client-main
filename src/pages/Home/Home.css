@@ -1,7 +1,7 @@
 /* General styles for the HomePage */
 .home-container {
   background-color: #f7f7f7;
-  overflow-x: hidden; /* Only hide horizontal overflow */
+  overflow-x: hidden;
 }
 
 /* Main Section Styles */
@@ -14,7 +14,8 @@
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   padding: 2rem 0;
-  position: relative; /* Ensure positioning context for children */
+  position: relative;
+  animation: fadeIn 1s ease-out;
 }
 
 /* Hero content layout */
@@ -23,70 +24,37 @@
   max-width: 1200px;
   text-align: center;
   margin-top: -15vw;
-  position: relative; /* To manage z-index stacking */
-  z-index: 1; /* Ensure text appears on top of images */
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero heading styles */
 .hero-heading {
-  font-size: 2rem; /* Adjusted font size */
+  font-size: 2.5rem; /* Larger size for better visibility */
   font-weight: 600;
   color: #333;
   line-height: 1.4;
   margin-bottom: 1rem;
-  text-transform: uppercase; /* Add text transform for emphasis */
+  text-transform: uppercase;
   margin-top: 1rem;
+  letter-spacing: 2px; /* Adding some letter-spacing for emphasis */
 }
 
 /* Hero text styles */
 .hero-text {
-  font-size: 1.2rem; /* Adjusted font size */
+  font-size: 1.4rem; /* Increased text size for better readability */
   color: #333;
   line-height: 1.8;
-  font-family: "Arial", sans-serif; /* Added font family for a cleaner look */
-  margin-bottom: 1.5rem;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 2rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
-/* Adjustments for smaller screens */
-@media (max-width: 768px) {
-  .hero-heading {
-    font-size: 1.5rem; /* Adjusted font size for smaller screens */
-  }
-
-  .hero-text {
-    font-size: 1rem; /* Adjusted font size for smaller screens */
-    margin-bottom: 1rem;
-  }
-
-  .hero-image-container {
-    padding: 0 5%; /* Adjust image container padding */
-  }
-
-  .hero-image {
-    width: 30%;
-    top: -10vw; /* Adjust image position on smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-heading {
-    font-size: 1.2rem; /* Further adjust heading size */
-  }
-
-  .hero-text {
-    font-size: 0.9rem; /* Further adjust text size */
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-image {
-    width: 40%; /* Adjust image size for very small screens */
-    top: -5vw;
-  }
-}
-
+/* Hero Image Adjustments */
 .hero-image-container {
   position: absolute;
   top: 0;
@@ -102,6 +70,8 @@
   position: absolute;
   top: -15vw;
   width: 25%;
+  object-fit: cover; /* Ensures the image looks good on all screen sizes */
+  transition: transform 0.5s ease; /* Smooth image scaling */
 }
 
 .hero-image.left {
@@ -119,27 +89,61 @@ section {
 }
 
 section h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   color: #333;
   margin-bottom: 2rem;
 }
 
-section p {
-  text-align: center;
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 3rem;
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 1.8rem;
+  }
+
+  .hero-text {
+    font-size: 1.1rem;
+  }
+
+  .hero-image-container {
+    padding: 0 5%;
+  }
+
+  .hero-image {
+    width: 35%;
+    top: -8vw;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
 }
 
-/* Adjust section text for smaller screens */
-@media (max-width: 768px) {
-  section h2 {
+@media (max-width: 480px) {
+  .hero-heading {
     font-size: 1.5rem;
   }
 
-  section p {
-    font-size: 0.9rem;
+  .hero-text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-image {
+    width: 40%;
+    top: -5vw;
+  }
+}
+
+/* Keyframe Animation for Fade-in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
