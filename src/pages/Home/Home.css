@@ -1,156 +1,145 @@
 /* General styles for the HomePage */
 .home-container {
-    overflow: hidden;
-    background-color: #f7f7f7;
-  }
-  
-  /* Main Section Styles */
+  background-color: #f7f7f7;
+  overflow-x: hidden; /* Only hide horizontal overflow */
+}
+
+/* Main Section Styles */
 /* Main Hero Section */
 .hero-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fcd7d7;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    padding: 2rem 0;
-    position: relative;
-  }
-  
-  /* Hero content layout */
-  .hero-content {
-    width: 90%;
-    max-width: 1200px;
-    text-align: center;
-    margin-top: -15vw;
-  }
-  
-  /* Hero heading styles */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcd7d7;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 2rem 0;
+  position: relative; /* Ensure positioning context for children */
+}
+
+/* Hero content layout */
+.hero-content {
+  width: 90%;
+  max-width: 1200px;
+  text-align: center;
+  margin-top: -15vw;
+  position: relative; /* To manage z-index stacking */
+  z-index: 1; /* Ensure text appears on top of images */
+}
+
+/* Hero heading styles */
+.hero-heading {
+  font-size: 2rem; /* Adjusted font size */
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  text-transform: uppercase; /* Add text transform for emphasis */
+  margin-top: 1rem;
+}
+
+/* Hero text styles */
+.hero-text {
+  font-size: 1.2rem; /* Adjusted font size */
+  color: #333;
+  line-height: 1.8;
+  font-family: "Arial", sans-serif; /* Added font family for a cleaner look */
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
   .hero-heading {
-    font-size: 2rem; /* Adjusted font size */
-    font-weight: 600;
-    color: #333;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-    text-transform: uppercase; /* Add text transform for emphasis */
+    font-size: 1.5rem; /* Adjusted font size for smaller screens */
   }
-  
-  /* Hero text styles */
+
   .hero-text {
-    font-size: 1.2rem; /* Adjusted font size */
-    color: #333;
-    line-height: 1.8;
-    font-family: "Arial", sans-serif; /* Added font family for a cleaner look */
-    margin-bottom: 1.5rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1rem; /* Adjusted font size for smaller screens */
+    margin-bottom: 1rem;
   }
-  
-  /* Adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .hero-heading {
-      font-size: 1.5rem; /* Adjusted font size for smaller screens */
-    }
-  
-    .hero-text {
-      font-size: 1rem; /* Adjusted font size for smaller screens */
-      margin-bottom: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero-heading {
-      font-size: 1.2rem; /* Further adjust heading size */
-    }
-  
-    .hero-text {
-      font-size: 0.9rem; /* Further adjust text size */
-      margin-bottom: 0.5rem;
-    }
-  }
-  
-  
-  .hero-heading {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333;
-    line-height: 1.4;
-    margin-top: 1rem;
-  }
-  
+
   .hero-image-container {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10%;
-    z-index: 0;
+    padding: 0 5%; /* Adjust image container padding */
   }
-  
+
   .hero-image {
-    position: absolute;
-    top: -15vw;
-    width: 25%;
+    width: 30%;
+    top: -10vw; /* Adjust image position on smaller screens */
   }
-  
-  .hero-image.left {
-    left: 0;
+}
+
+@media (max-width: 480px) {
+  .hero-heading {
+    font-size: 1.2rem; /* Further adjust heading size */
   }
-  
-  .hero-image.right {
-    right: 0;
+
+  .hero-text {
+    font-size: 0.9rem; /* Further adjust text size */
+    margin-bottom: 0.5rem;
   }
-  
-  @media (max-width: 768px) {
-    .hero-image-container {
-      padding: 0 5%;
-    }
-  
-    .hero-image {
-      width: 30%;
-      top: -10vw;
-    }
-  
-    .hero-heading {
-      font-size: 1.5rem;
-    }
-  
-    .hero-text {
-      font-size: 1rem;
-    }
+
+  .hero-image {
+    width: 40%; /* Adjust image size for very small screens */
+    top: -5vw;
   }
-  
-  /* Section styles for product sliders */
-  section {
-    padding: 3rem 0;
-    background-color: #ffffff;
-  }
-  
+}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  z-index: 0;
+}
+
+.hero-image {
+  position: absolute;
+  top: -15vw;
+  width: 25%;
+}
+
+.hero-image.left {
+  left: 0;
+}
+
+.hero-image.right {
+  right: 0;
+}
+
+/* Section styles for product sliders */
+section {
+  padding: 3rem 0;
+  background-color: #ffffff;
+}
+
+section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+section p {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+/* Adjust section text for smaller screens */
+@media (max-width: 768px) {
   section h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-    margin-bottom: 2rem;
+    font-size: 1.5rem;
   }
-  
+
   section p {
-    text-align: center;
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 3rem;
+    font-size: 0.9rem;
   }
-  
-  @media (max-width: 768px) {
-    section h2 {
-      font-size: 1.5rem;
-    }
-  
-    section p {
-      font-size: 0.9rem;
-    }
-  }
-  
+}
