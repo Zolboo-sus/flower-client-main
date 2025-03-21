@@ -1,7 +1,7 @@
 import React from "react";
 import Baantag from "../../assets/baantag.png";
 import flower from "../../assets/flower1.png";
-import "./Home.css";
+import "./Home.css";  // This imports the CSS file we just edited.
 import Birthday from "../../components/slider/BirthdayBouquets";
 import Special from "../../components/slider/SpecialBouquets";
 import Mother from "../../components/slider/MothersDay";
