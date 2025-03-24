@@ -11,7 +11,7 @@ const DesktopHeader = () => {
     { name: "Баглаа", id: "occasion" },
     { name: "Flowers", id: "flowers" },
     { name: "Bouquets", id: "bouquets" },
-    { name: "Plants", id: "plants" },
+    { name: "Plants", id: "plants", href: "/plants" },  // Add href for the Plants link
     { name: "Gifts", id: "gift" },
     { name: "Sale", id: "sale" },
   ];
@@ -38,16 +38,23 @@ const DesktopHeader = () => {
                 }`}
               onClick={() => setActiveIndex(index)}
             >
-              <Link
-                activeClass="active"
-                to={item.id}
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={800}
-              >
-                {item.name}
-              </Link>
+              {/* If the item has an href (like "Plants"), render a normal <a> tag */}
+              {item.href ? (
+                <a href={item.href} target="_blank" className="text-[1.2vw] font-medium cursor-pointer">
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  activeClass="active"
+                  to={item.id}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={800}
+                >
+                  {item.name}
+                </Link>
+              )}
             </span>
           ))}
           <a href="/cart">
