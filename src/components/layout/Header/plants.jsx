@@ -1,5 +1,13 @@
+// src/pages/Plants.jsx
 import React from "react";
-import DesktopHeader from "../components/DesktopHeader"; // Import your header
+import DesktopHeader from "../components/DesktopHeader"; // Make sure the import path is correct
+// src/pages/Plants.jsx
+import React from "react";
+import DesktopHeader from "../components/DesktopHeader";
+import "./Plants.css"; // Import the CSS file
+
+// Rest of your Plants component code...
+
 
 const Plants = () => {
   return (
@@ -11,7 +19,7 @@ const Plants = () => {
       <h1>Our Plants Collection</h1>
       <p>Choose your favorite plants from the categories below:</p>
 
-      {/* Category Links */}
+      {/* Categories Section */}
       <div className="category-container">
         <div className="category-card">
           <h2>Indoor Plants</h2>
