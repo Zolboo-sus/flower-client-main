@@ -39,7 +39,7 @@ const Header = () => {
         <a href="#bouquets" onClick={closeNav}>
           Bouquets
         </a>
-        <a href="#plants" onClick={closeNav}>
+        <a href="/plants" target="_blank" onClick={closeNav}>
           Plants
         </a>
         <a href="#gift" to onClick={closeNav}>
