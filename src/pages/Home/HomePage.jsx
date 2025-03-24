@@ -12,20 +12,21 @@ const HomePage = () => {
   return (
     <ThemeProvider>
       <div className="home-container">
+        {/* Hero Section */}
         <div className="hero-section">
           <div className="hero-content">
             <span className="hero-heading">Your text here</span>
             <span className="hero-text">
-              <b>“FLOWER CENTER MONGOLIA”</b>{" "}
-              Цэцэг төв нь Монгол улсын анхны цэцгийн дэлгүүр болон
-              мэндэлсэн цагаас таны аз жаргалтай мөч бүхэнтэй хамт
-              байгаадаа бид үргэлж баяртай байдаг байгаа
+              <strong>“FLOWER CENTER MONGOLIA”</strong> Цэцэг төв нь Монгол
+              улсын анхны цэцгийн дэлгүүр болон мэндэлсэн цагаас таны аз
+              жаргалтай мөч бүхэнтэй хамт байгаадаа бид үргэлж баяртай байдаг
+              байгаа
             </span>
           </div>
           <div className="hero-image-container">
             <img
               src={Baantag}
-              alt="Baantag image"
+              alt="Baantag image of flower arrangement"
               className="hero-image left"
             />
             <img
@@ -35,6 +36,8 @@ const HomePage = () => {
             />
           </div>
         </div>
+
+        {/* Product Sections */}
         <section>
           <h2>Birthday Bouquets</h2>
           <Birthday />
