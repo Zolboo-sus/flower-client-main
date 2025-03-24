@@ -4,6 +4,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import logo from "../../../assets/logo.svg";
 import { useState } from "react";
 import "./Header.css";
+import { Link } from 'react-scroll';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

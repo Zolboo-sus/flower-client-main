@@ -1,8 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-scroll"; // import from react-scroll
 import logo from "../../../assets/logo.svg";
 import { AiOutlineShopping } from "react-icons/ai";
-// import { Link } from "react-router-dom";
-import { Link, animateScroll as scroll } from "react-scroll";
 
 const DesktopHeader = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -13,7 +12,7 @@ const DesktopHeader = () => {
     { name: "Flowers", id: "flowers" },
     { name: "Plants", id: "plants" },
     { name: "Gifts", id: "gift" },
-    { name: "Sale", id: "d" },
+    { name: "Sale", id: "sale" },
   ];
 
   return (
@@ -38,8 +37,9 @@ const DesktopHeader = () => {
                 }`}
               onClick={() => setActiveIndex(index)}
             >
+              {/* Wrap the item name inside the Link component for scrolling */}
               <Link
-                to={item.id}
+                to={item.id} // This matches the id of the section you're scrolling to
                 spy={true}
                 smooth={true}
                 offset={-70}
