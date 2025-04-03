@@ -11,52 +11,39 @@ import { ThemeProvider } from "@material-tailwind/react";
 const HomePage = () => {
   return (
     <ThemeProvider>
-      <div className="home-container">
-        {/* Hero Section */}
-        <div className="hero-section">
-          <div className="hero-content">
-            <span className="hero-heading">Your text here</span>
-            <span className="hero-text">
-              <strong>“FLOWER CENTER MONGOLIA”</strong> Цэцэг төв нь Монгол
-              улсын анхны цэцгийн дэлгүүр болон мэндэлсэн цагаас таны аз
-              жаргалтай мөч бүхэнтэй хамт байгаадаа бид үргэлж баяртай байдаг
-              байгаа
-            </span>
-          </div>
-          <div className="hero-image-container">
-            <img
-              src={Baantag}
-              alt="Baantag image of flower arrangement"
-              className="hero-image left"
-            />
-            <img
-              src={flower}
-              alt="Flower decoration"
-              className="hero-image right"
-            />
+      <div className="overflow-hidden">
+        <div className="w-full mt-6 md:mt-12 flex items-end">
+          <div className="w-full md:h-[18vw] flex justify-center md:items-center bg-[#fcd7d7] rounded-lg shadow-lg">
+            <div className="w-[50%]">
+              <span className="text-[10px] sm:text-[20px] md:text-[20px] lg:text-[1.8vw] font-sans leading-0">
+                <b className="md:font-semibold">“FLOWER CENTER MONGOLIA”</b>{" "}
+                Цэцэг төв нь Монгол улсын анхны цэцгийн дэлгүүр болон мэндэлсэн
+                цагаас таны аз жаргалтай мөч бүхэнтэй хамт байгаадаа бид үргэлж
+                баяртай байдаг шү"
+              </span>
+            </div>
+            <div className="flex w-screen justify-between absolute ">
+              <img
+                src={Baantag}
+                alt=""
+                className="absolute left-0 md:left-[0.7vw] md:top-[-16vw] top-[-15vw] md:h-[32vw]"
+              />
+              <img
+                src={flower}
+                alt=""
+                className="absolute right-0 top-[-5vw] md:h-[18vw] md:top-[-9vw] md:right-[0.6vw]"
+              />
+            </div>
           </div>
         </div>
-
-        {/* Product Sections */}
-        <section>
-          <h2>Birthday Bouquets</h2>
-          <Birthday />
-        </section>
-        <section>
-          <h2>Special Bouquets</h2>
-          <Special />
-        </section>
-        <section>
-          <h2>Mother's Day Bouquets</h2>
-          <Mother />
-        </section>
-        <section>
-          <h2>Gifts</h2>
-          <Gifts />
-        </section>
+        <Birthday />
+        <Special />
+        <Mother />
+        <Gifts />
       </div>
     </ThemeProvider>
   );
 };
 
 export default HomePage;
+// #fcd7d7
