@@ -174,7 +174,7 @@ const Order = () => {
                           Утасны дугаар
                         </label>
                         <input
-                          type="text"
+                          type="int"
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
