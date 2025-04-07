@@ -31,7 +31,7 @@ const Cart = () => {
   const invoiceSend = () => {
     setIsLoading(true);
 
-    axios.post('https://tsetsegtuw.templateapi.xyz/tsetsegtuv/invoice', {
+    axios.post('https://tsetsegtuw.templateapi.xyz/invoice', {
       price: totalAmount
     }).then((e) => {
       navigate('/order/' + e.data.data.id);
@@ -53,7 +53,7 @@ const Cart = () => {
               {/* Product Info */}
               <div className="flex items-center space-x-4">
                 <img
-                  src={'https://tsetsegtuw.templateapi.xyz/tsetsegtuv/' + item.image}
+                  src={'https://tsetsegtuw.templateapi.xyz/' + item.image}
                   alt={item.productName}
                   className="w-20 h-20 object-cover rounded-md shadow-md"
                 />

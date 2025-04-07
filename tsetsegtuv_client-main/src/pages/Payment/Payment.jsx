@@ -27,7 +27,7 @@ const Payment = () => {
 
   const checkPayment = () => {
     setIsLoading(true);
-    axios.get('https://tsetsegtuw.templateapi.xyz/tsetsegtuv/qpay/callback/' + invoiceId)
+    axios.get('https://tsetsegtuw.templateapi.xyz/qpay/callback/' + invoiceId)
       .then(() => navigate('/complete/' + orderId))
       .catch(() => alert('Төлбөр төлөгдөөгүй байна'))
       .finally(() => setIsLoading(false))

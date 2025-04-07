@@ -8,7 +8,7 @@ const Special = () => {
 
   useEffect(() => {
     axios
-      .get("https://tsetsegtuw.templateapi.xyz/tsetsegtuv/product/special")
+      .get("https://tsetsegtuw.templateapi.xyz/product/special")
       .then((res) => {
         const products = res?.data?.data || [];
         const fixedProducts = products.map((product) => {
@@ -45,7 +45,7 @@ const Special = () => {
                 data-carousel-item="active"
               >
                 <img
-                  src={`https://tsetsegtuw.templateapi.xyz/tsetsegtuv/${flowers[0]?.productImages[0] || ""
+                  src={`https://tsetsegtuw.templateapi.xyz/${flowers[0]?.productImages[0] || ""
                     }`}
                   alt={flowers[0]?.productName || "Product Image"}
                   className="absolute block object-contain h-[50vh] w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
@@ -65,7 +65,7 @@ const Special = () => {
             <div className="flex flex-col w-[19vh] md:w-[42.2%] md:h-[40vw] gap-1">
               <Link to={'/product/' + flowers[3]?._id}>
                 <img
-                  src={`https://tsetsegtuw.templateapi.xyz/tsetsegtuv/${flowers[1]?.productImages[0] || ""
+                  src={`https://tsetsegtuw.templateapi.xyz/${flowers[1]?.productImages[0] || ""
                     }`}
                   alt={flowers[1]?.productName || "Product 1"}
                   className=" object-contain h-[10vh] md:h-[20vw] w-full"
@@ -73,7 +73,7 @@ const Special = () => {
               </Link>
               <Link to={'/product/' + flowers[3]?._id}>
                 <img
-                  src={`https://tsetsegtuw.templateapi.xyz/tsetsegtuv/${flowers[2]?.productImages[0] || ""
+                  src={`https://tsetsegtuw.templateapi.xyz/${flowers[2]?.productImages[0] || ""
                     }`}
                   alt={flowers[2]?.productName || "Product 2"}
                   className=" object-contain h-[10vh] md:h-[19.7vw] w-full"
@@ -82,7 +82,7 @@ const Special = () => {
             </div>
             <Link to={'/product/' + flowers[3]?._id} className="w-[19.5vh] md:w-[42.5%] md:h-[40vw] h-full flex flex-col">
               <img
-                src={`https://tsetsegtuw.templateapi.xyz/tsetsegtuv/${flowers[3]?.productImages[0] || ""
+                src={`https://tsetsegtuw.templateapi.xyz/${flowers[3]?.productImages[0] || ""
                   }`}
                 alt={flowers[3]?.productName || "Product 3"}
                 className="object-contain h-[20.5vh] md:h-[40vw]"
@@ -102,7 +102,7 @@ const Special = () => {
             <Link to={'/product/' + list._id}>
               <img
                 key={`more-images-${index}`}
-                src={`https://tsetsegtuw.templateapi.xyz/tsetsegtuv/${list?.productImages[0] || ""}`}
+                src={`https://tsetsegtuw.templateapi.xyz/${list?.productImages[0] || ""}`}
                 alt={list?.productName || "Product Image"}
                 className="w-auto h-[8vh] md:h-[16vw]"
               />

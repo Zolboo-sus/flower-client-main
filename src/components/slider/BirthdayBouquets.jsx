@@ -10,7 +10,7 @@ const MothersDay = () => {
 
   useEffect(() => {
     axios
-      .get("https://tsetsegtuw.templateapi.xyz/tsetsegtuv/product")
+      .get("https://tsetsegtuw.templateapi.xyz/product")
       .then((res) => {
         // const products = res?.data?.data || [];
         // Fix image paths for all products
@@ -47,7 +47,7 @@ const MothersDay = () => {
                 <div className="shadow-md shadow-[#d3d3d3] rounded-lg w-[max-content] md:relative">
                   {/* Loop through multiple images if needed */}
                   <img
-                    src={`https://tsetsegtuw.templateapi.xyz/tsetsegtuv/${flower.productImages[0]}`}
+                    src={`https://tsetsegtuw.templateapi.xyz/${flower.productImages[0]}`}
                     alt={flower.productName}
                     className="h-[109px] w-[87px] md:h-[20vw] md:w-[14vw] rounded-lg"
                   />

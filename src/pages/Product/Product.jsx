@@ -25,7 +25,7 @@ const Product = () => {
   useEffect(() => {
     if (isLoading) {
       axios
-        .get(`https://tsetsegtuw.templateapi.xyz/tsetsegtuv/product/id/${id}`)
+        .get(`https://tsetsegtuw.templateapi.xyz/product/id/${id}`)
         .then((res) => setData(res.data.data))
         .catch((er) => console.log(er))
         .finally(() => setIsLoading(false));
@@ -67,7 +67,7 @@ const Product = () => {
       <div className="w-full flex items-start gap-6 mt-5">
         <div className="md:w-[50%] w-auto relative">
           {data.productImages ? <img
-            src={"https://tsetsegtuw.templateapi.xyz/tsetsegtuv/" + data.productImages[0]}
+            src={"https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]}
             alt="Flower"
             className="w-[25vw] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
           /> : null}

@@ -9,7 +9,7 @@ const Gifts = () => {
 
   useEffect(() => {
     if (isLoading) {
-      axios.get('https://tsetsegtuw.templateapi.xyz/tsetsegtuv/item')
+      axios.get('https://tsetsegtuw.templateapi.xyz/item')
         .then((e) => setGifts(e.data.data))
         .catch((e) => console.log(e))
         .finally(() => setIsLoading(false)); // Set isLoading to false after fetching
@@ -28,7 +28,7 @@ const Gifts = () => {
       <div className="flex w-full h-[19.5vh] justify-center gap-2 md:gap-[10vw] items-start shadow-md shadow-[#888a8c] rounded-md md:h-[30vw] md:mt-[3vw]">
         <div className="flex flex-col h-full mr-2 relative md:h-full md:self-start">
           <img
-            src={'https://tsetsegtuw.templateapi.xyz/tsetsegtuv/' + gifts?.[0]?.itemImages?.[0]?.image || ''}
+            src={'https://tsetsegtuw.templateapi.xyz/' + gifts?.[0]?.itemImages?.[0]?.image || ''}
             alt=""
             className="h-full md:h-full"
           />
@@ -43,7 +43,7 @@ const Gifts = () => {
           {gifts.map((e) => (
             <div key={e.id || e.item_name} className="relative w-[86%]">
               <img
-                src={'https://tsetsegtuw.templateapi.xyz/tsetsegtuv/' + e.itemImages[0].image}
+                src={'https://tsetsegtuw.templateapi.xyz/' + e.itemImages[0].image}
                 alt=""
                 className="h-auto w-[57px]  rounded-sm md:w-[12vw] "
               />

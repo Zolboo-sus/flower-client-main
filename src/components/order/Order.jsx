@@ -53,9 +53,9 @@ const Order = () => {
   const handleSubmit = () => {
     setIsLoading(true);
 
-    axios.post('https://tsetsegtuw.templateapi.xyz/tsetsegtuv/order', formData)
+    axios.post('https://tsetsegtuw.templateapi.xyz/order', formData)
       .then((e) => {
-        axios.post('https://tsetsegtuw.templateapi.xyz/tsetsegtuv/qpay/' + id, {
+        axios.post('https://tsetsegtuw.templateapi.xyz/qpay/' + id, {
           orderId: e.data.data._id
         }).then((el) => {
           navigate('/payment/' + el.data.invoice.sender_invoice_id + '/' + el.data.data.qr_text + '/' + e.data.data._id);
