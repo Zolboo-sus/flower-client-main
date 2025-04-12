@@ -86,9 +86,9 @@ const Product = () => {
             <select name="" id="" className="text-sm md:text-[3vh] md:w-auto">
               <option value=""></option>
               <option value="">Цэцэг</option>
-              <option value="">Яргуй</option>
-              <option value="">Халгай</option>
-              <option value="">Шарил</option>
+              <option value="">Лили</option>
+              <option value="">Ромашка</option>
+              <option value="">Улаан сарнай</option>
             </select>
           </div>
 
