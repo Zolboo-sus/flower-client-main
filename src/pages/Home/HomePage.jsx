@@ -1,12 +1,28 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Home.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import slider from "../../assets/slider.png";
 import Baantag from "../../assets/baantag.png";
 import flower from "../../assets/flower1.png";
+import axios from "axios";
 
 const HomePage = () => {
   const scrollRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    if(isLoading) {
+      Promise.all([
+        axios.get('https://tsetsegtuw.templateapi.xyz/categories'),
+        axios.get('https://tsetsegtuw.templateapi.xyz/product'),
+      ]).then(([category, product]) => {
+        setCategories(category.data.data);
+        setProducts(product.data.data);
+      }).finally(() => setIsLoading(false));
+    }
+  }, [isLoading])
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -20,10 +36,11 @@ const HomePage = () => {
   return (
     <div className="max-md:pt-5">
       <img src={slider} className="w-screen h-auto " alt="" />
-      <div className="flex flex-col w-screen relative">
+      {categories.map((e) => ( 
+        <div className="flex flex-col w-screen relative">
         <div className="flex w-full items-center justify-center gap-10 py-4">
           <div className="w-full h-[1px] bg-black/80" />
-          <p className="text-xl">Баглаа</p>
+          <p className="text-xl w-max" >{e.catName}</p>
           <div className="w-full h-[1px] bg-black/80" />
         </div>
         <div>
@@ -45,23 +62,23 @@ const HomePage = () => {
             className="flex w-full overflow-x-scroll px-[5%] scrollbar-hide"
           >
             <div className="flex gap-4">
-              {Array.from({ length: 20 }).map((_, index) => (
+              {products.filter((el) => el.category === e._id).map((el, index) => (
                 <div
                   key={index}
                   className="flex flex-col w-[25vw] max-md:w-[35vw] items-start gap-2 shrink-0"
                 >
                   <img
                     className="w-[20vw] h-[20vw] max-md:w-[45vw] max-md:h-[45vw] object-cover shadow-md rounded-md"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjX7HDuxHiks1XJZ6kjYtKPJ8yZ87yWFHxWA&s"
+                    src={el.productImages ? "https://tsetsegtuw.templateapi.xyz/"+ el.productImages[0] : 'no-jpg'}
                     alt=""
                   />
-                  <p>{Intl.NumberFormat("en-us").format(75000)}₮</p>
+                  <p>{Intl.NumberFormat("en-us").format(el.price)}₮</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </div>))}
       <div className="w-full mt-6 md:mt-12 flex items-end">
         <div className="w-full md:h-[18vw] flex justify-center md:items-center bg-[#fcd7d7] rounded-lg shadow-lg">
           <div className="w-[50%]">
