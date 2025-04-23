@@ -22,7 +22,11 @@ const HomePage = () => {
         setProducts(product.data.data);
       }).finally(() => setIsLoading(false));
     }
-  }, [isLoading])
+  }, [isLoading]);
+
+  if(isLoading) {
+    return <div className="loader"></div>
+  }
 
   const scroll = (direction) => {
     if (scrollRef.current) {
