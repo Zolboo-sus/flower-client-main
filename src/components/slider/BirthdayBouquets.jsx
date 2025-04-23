@@ -9,6 +9,8 @@ const MothersDay = () => {
   const [flowers, setFlowers] = useState([]);
 
   useEffect(() => {
+
+    
     axios
       .get("https://tsetsegtuw.templateapi.xyz/product")
       .then((res) => {
