@@ -5,6 +5,7 @@ import slider from "../../assets/slider.png";
 import Baantag from "../../assets/baantag.png";
 import flower from "../../assets/flower1.png";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const scrollRef = useRef(null);
@@ -67,7 +68,8 @@ const HomePage = () => {
           >
             <div className="flex gap-4">
               {products.filter((el) => el.category === e._id).map((el, index) => (
-                <div
+                <Link
+                to={'/product/' + el._id}
                   key={index}
                   className="flex flex-col w-[25vw] max-md:w-[35vw] items-start gap-2 shrink-0"
                 >
@@ -77,7 +79,7 @@ const HomePage = () => {
                     alt=""
                   />
                   <p>{Intl.NumberFormat("en-us").format(el.price)}₮</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
