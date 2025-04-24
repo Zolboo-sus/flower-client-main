@@ -9,10 +9,10 @@ const Order = () => {
   const [delived, setDeliver] = useState(true);
   const [Active, setActive] = useState(true);
   const [navigater, setNavigate] = useState(false);
-  const { cart } = useCart();
   const navigate = useNavigate();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
+  const { cart } = useCart();
 
   const totalAmount = cart.reduce(
     (acc, item) => acc + item.price * item.quality,
@@ -61,6 +61,7 @@ const Order = () => {
           navigate('/payment/' + el.data.invoice.sender_invoice_id + '/' + el.data.data.qr_text + '/' + e.data.data._id);
 
           window.localStorage.setItem('qpay_urls', JSON.stringify(el.data.data.urls));
+          window.localStorage.setItem('order_info', JSON.stringify(formData));
         })
           .finally(() => setIsLoading(false))
       })
