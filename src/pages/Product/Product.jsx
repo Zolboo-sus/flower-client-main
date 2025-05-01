@@ -32,7 +32,7 @@ const Product = () => {
     }
     if (cart) {
       if (cart.some((item) => item.id === id)) {
-        setAddedToCart(true);
+        setAddedToCart(false);
       }
     }
   }, [isLoading, id, cart]);
