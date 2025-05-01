@@ -32,7 +32,7 @@ const Product = () => {
     }
     if (cart) {
       if (cart.some((item) => item.id === id)) {
-        setAddedToCart(false);
+        setAddedToCart(true);
       }
     }
   }, [isLoading, id, cart]);
@@ -42,15 +42,11 @@ const Product = () => {
   }
 
   const handleAddToCart = () => {
-    setAddedToCart(false);
-
 
     if (addedToCart) {
       alert("Бүтээгдэхүүн аль хэдийн сагсанд хийгдсэн байна.");
-    } else {
-      // энд сагсанд хийх кодоо оруулна
-      setAddedToCart(false);
-    }
+      return;
+    } 
 
     const newCard = {
       id: data._id,
@@ -62,6 +58,8 @@ const Product = () => {
     };
 
     addCardToCart(newCard);
+    setAddedToCart(true);
+    alert("Бүтээгдэхүүн сагсанд нэмэгдлээ.");
   };
 
   return (
