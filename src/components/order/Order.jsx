@@ -330,7 +330,7 @@ const Order = () => {
                       Хүргүүлэх цаг
                     </label>
                     <input
-                      type="time"
+                      type="time, date"
                       name="deliveryTime"
                       value={formData.deliveryTime}
                       onChange={handleInputChange}
