@@ -44,6 +44,14 @@ const Product = () => {
   const handleAddToCart = () => {
     setAddedToCart(true);
 
+
+    if (addedToCart) {
+      alert("Бүтээгдэхүүн аль хэдийн сагсанд хийгдсэн байна.");
+    } else {
+      // энд сагсанд хийх кодоо оруулна
+      setAddedToCart(true);
+    }
+
     const newCard = {
       id: data._id,
       name: data.productName,
@@ -114,13 +122,13 @@ const Product = () => {
             </div>
 
             <button
-              onClick={handleAddToCart}
-              className={`px-1 py-2 rounded-md shadow-lg text-sm w-[25vw] md:w-[20vh] md:text-[2.5vh] 
-                ${addedToCart ? "bg-[#ffd1d4]" : "border hover:bg-gray-300"
-                }`}
-            >
-              {addedToCart ? "Сагсанд хийлээ" : "Сагсанд хийх"}
-            </button>
+  onClick={handleAddToCart}
+  className={`px-1 py-2 rounded-md shadow-lg text-sm w-[25vw] md:w-[20vh] md:text-[2.5vh] 
+    ${addedToCart ? "bg-[#ffd1d4]" : "border hover:bg-gray-300"}`}
+>
+  {addedToCart ? "Сагсанд хийлээ" : "Сагсанд хийх"}
+</button>
+
           </div>
         </div>
       </div>
