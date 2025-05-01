@@ -69,7 +69,7 @@ const Product = () => {
           {data.productImages ? <img
             src={"https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]}
             alt="Flower"
-            className="w-[80vw] h-[80vw] max-md:w-[80vw] max-md:h-[80vw] object-cover rounded-md shadow"
+            className="w-[25vw] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
           /> : null}
         </div>
 
