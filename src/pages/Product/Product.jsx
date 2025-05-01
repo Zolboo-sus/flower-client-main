@@ -65,11 +65,11 @@ const Product = () => {
       </div>
 
       <div className="w-full flex items-start gap-6 mt-5">
-        <div className="md:w-[100%] w-auto relative">
+        <div className="md:w-[50%] w-auto relative">
           {data.productImages ? <img
             src={"https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]}
             alt="Flower"
-            className="w-[25vw] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
+            className="w-[80vw] h-[80vw] max-md:w-[80vw] max-md:h-[80vw] object-cover rounded-md shadow"
           /> : null}
         </div>
 
