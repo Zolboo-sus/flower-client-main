@@ -51,7 +51,7 @@ function App() {
             <Route path="/payment/:invoiceId/:qr/:orderId" element={<Payment />} />
           </Routes>
         </Router>
-        <div className="md:mt-[10%] mt-[30%] md: bottom-0 md:w-full"></div>
+        <div className="md:mt-[2%] mt-[5%] md: bottom-0 md:w-full"></div>
         <Footer />
       </CartProvider>
     </div>
