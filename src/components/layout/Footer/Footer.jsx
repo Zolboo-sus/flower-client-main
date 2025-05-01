@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="md:size-[216px] size-[70px] md:my-5 bg-cover">
           <img src={logo} alt="flower" className="w-full h-full bg-cover" />
         </div>
-        <div className="flex gap-3 md:w-[80%] w-full md: relative justify-between">
+        <div className="flex gap-6 md:w-[80%] w-full md: relative justify-between">
           <div className="flex flex-col gap-2 w-auto">
             <h2 className="font-medium md:text-[24px] text-[8px] text-balance ">
               Ангилал
