@@ -4,7 +4,7 @@ import logo from "../../../assets/logo.svg";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col bg-pink-200 md:p-[5%] p-5 text-center bottom-0 ">
+    <div className="flex flex-col bg-pink-200 md:p-[5%] p-5 text-center mt-0 pt-0 ">
       <div className="flex w-full md: justify-between h-full text-[6px] text-wrap md: gap-4 text-start items-center">
         <div className="md:size-[216px] size-[70px] md:my-5 bg-cover">
           <img src={logo} alt="flower" className="w-full h-full bg-cover" />
