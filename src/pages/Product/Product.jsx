@@ -47,10 +47,9 @@ const Product = () => {
 
     if (addedToCart) {
       alert("Бүтээгдэхүүн аль хэдийн сагсанд хийгдсэн байна.");
-      setadddedToCart(false);
     } else {
       // энд сагсанд хийх кодоо оруулна
-      setAddedToCart(true);
+      setAddedToCart(false);
     }
 
     const newCard = {
