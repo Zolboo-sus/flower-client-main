@@ -338,6 +338,20 @@ const Order = () => {
                       className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#FFB6BA]"
                     />
                   </div>
+
+                  <div className="flex flex-col">
+                    <label className="text-sm font-medium text-gray-700">
+                      Хүргүүлэх өдөр
+                    </label>
+                    <input
+                      type="date"
+                      name="deliveryDate"
+                      value={formData.deliveryDate}
+                      onChange={handleInputChange}
+                      className="border shadow-lg bg-opacity-50 border-gray-600 rounded-md p-4 w-full focus:outline-none focus:ring-4 focus:ring-[#FFB6BA]"
+                    />
+                  </div>
+
                 </div>
                 <div className="flex flex-col mt-4">
                   <label className="text-sm font-medium text-gray-700">
