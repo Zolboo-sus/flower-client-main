@@ -51,29 +51,55 @@ const Order = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    setIsLoading(true);
-
-    axios.post('https://tsetsegtuw.templateapi.xyz/order', formData)
-      .then((e) => {
-        axios.post('https://tsetsegtuw.templateapi.xyz/qpay/' + id, {
-          orderId: e.data.data._id
-        }).then((el) => {
-          navigate('/payment/' + el.data.invoice.sender_invoice_id + '/' + el.data.data.qr_text + '/' + e.data.data._id);
-
-          window.localStorage.setItem('qpay_urls', JSON.stringify(el.data.data.urls));
-          window.localStorage.setItem('order_info', JSON.stringify(formData));
-        })
-          .finally(() => setIsLoading(false))
-      })
-      .catch(() => alert('ads'))
-    // .finally(() => setIsLoading(false))
+  const handleSubmit = async () => {
+    const requiredFields = [
+      "phone", "email",
+      delived && "district",
+      delived && "subdistrict",
+      delived && "address",
+      delived && "receiverName",
+      delived && "receiverLastName",
+      delived && "receiverPhone",
+      delived && "deliveryTime"
+    ].filter(Boolean);
+  
+    for (const field of requiredFields) {
+      if (!formData[field]) {
+        alert("Та бүх талбарыг бүрэн бөглөнө үү.");
+        return;
+      }
+    }
+  
+    // 📧 Email format validation
+    if (!formData.email.includes('@')) {
+      alert("Зөв имэйл хаяг оруулна уу. '@' тэмдэгт заавал байх ёстой.");
+      return;
+    }
+  
+    try {
+      setIsLoading(true);
+  
+      const orderRes = await axios.post('https://tsetsegtuw.templateapi.xyz/order', {
+        ...formData,
+        date: new Date().toISOString(),
+      });
+  
+      const paymentRes = await axios.post(`https://tsetsegtuw.templateapi.xyz/qpay/${id}`, {
+        orderId: orderRes.data.data._id,
+      });
+  
+      window.localStorage.setItem('qpay_urls', JSON.stringify(paymentRes.data.data.urls));
+      window.localStorage.setItem('order_info', JSON.stringify(formData));
+  
+      navigate(`/payment/${paymentRes.data.invoice.sender_invoice_id}/${paymentRes.data.data.qr_text}/${orderRes.data.data._id}`);
+    } catch (error) {
+      alert("Алдаа гарлаа. Та дахин оролдоно уу.");
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
-
-  if (navigater) {
-    navigate('/payment');
-  }
-
+  
 
   const active =
     "size-[45px] shadow-xl rounded-full bg-[#feb6bb] text-lg flex justify-center items-center";
