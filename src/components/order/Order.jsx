@@ -13,7 +13,6 @@ const Order = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const { cart } = useCart();
-  const [errors, setErrors] = useState({});
 
   const totalAmount = cart.reduce(
     (acc, item) => acc + item.price * item.quality,
@@ -53,62 +52,54 @@ const Order = () => {
   };
 
   const handleSubmit = async () => {
-    const newErrors = {};
-    const requiredFields = [
-      "phone", "email",
-      delived && "district",
-      delived && "subdistrict",
-      delived && "address",
-      delived && "receiverName",
-      delived && "receiverLastName",
-      delived && "receiverPhone",
-      delived && "deliveryTime"
-    ].filter(Boolean);
-  
-    for (const field of requiredFields) {
-      if (!formData[field]) {
-        alert("Та бүх талбарыг бүрэн бөглөнө үү.");
-        return;
-      }
-    }
-  
-    // 📧 Email format validation
-    if (!formData.email.includes('@')) {
-      alert("Зөв имэйл хаяг оруулна уу. '@' тэмдэгт заавал байх ёстой.");
-      return;
-    }
+  const requiredFields = [
+    "phone", "email",
+    delived && "district",
+    delived && "subdistrict",
+    delived && "address",
+    delived && "receiverName",
+    delived && "receiverLastName",
+    delived && "receiverPhone",
+    delived && "deliveryTime"
+  ].filter(Boolean);
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
+  for (const field of requiredFields) {
+    if (!formData[field]) {
+      alert("Та бүх талбарыг бүрэн бөглөнө үү.");
       return;
     }
-  
-    setErrors({});
-  
-    try {
-      setIsLoading(true);
-  
-      const orderRes = await axios.post('https://tsetsegtuw.templateapi.xyz/order', {
-        ...formData,
-        date: new Date().toISOString(),
-      });
-  
-      const paymentRes = await axios.post(`https://tsetsegtuw.templateapi.xyz/qpay/${id}`, {
-        orderId: orderRes.data.data._id,
-      });
-  
-      window.localStorage.setItem('qpay_urls', JSON.stringify(paymentRes.data.data.urls));
-      window.localStorage.setItem('order_info', JSON.stringify(formData));
-  
-      navigate(`/payment/${paymentRes.data.invoice.sender_invoice_id}/${paymentRes.data.data.qr_text}/${orderRes.data.data._id}`);
-    } catch (error) {
-      alert("Алдаа гарлаа. Та дахин оролдоно уу.");
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
+  }
+
+  // 📧 Email format validation
+  if (!formData.email.includes('@')) {
+    alert("Зөв имэйл хаяг оруулна уу. '@' тэмдэгт заавал байх ёстой.");
+    return;
+  }
+
+  try {
+    setIsLoading(true);
+
+    const orderRes = await axios.post('https://tsetsegtuw.templateapi.xyz/order', {
+      ...formData,
+      date: new Date().toISOString(),
+    });
+
+    const paymentRes = await axios.post(`https://tsetsegtuw.templateapi.xyz/qpay/${id}`, {
+      orderId: orderRes.data.data._id,
+    });
+
+    window.localStorage.setItem('qpay_urls', JSON.stringify(paymentRes.data.data.urls));
+    window.localStorage.setItem('order_info', JSON.stringify(formData));
+
+    navigate(`/payment/${paymentRes.data.invoice.sender_invoice_id}/${paymentRes.data.data.qr_text}/${orderRes.data.data._id}`);
+  } catch (error) {
+    alert("Алдаа гарлаа. Та дахин оролдоно уу.");
+    console.error(error);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   const active =
     "size-[45px] shadow-xl rounded-full bg-[#feb6bb] text-lg flex justify-center items-center";
@@ -227,12 +218,8 @@ const Order = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 ` +
-                          (errors.email ? 'border-red-500 focus:ring-red-300' : 'border-gray-300 focus:ring-[#FFB6BA]"
+                          className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#FFB6BA]"
                         />
-                         {errors.email && (
-    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-  )}
                       </div>
                     </div>
                   </div>
