@@ -42,7 +42,7 @@ const Product = () => {
   }
 
   const handleAddToCart = () => {
-    setAddedToCart(true);
+    setAddedToCart(false);
 
 
     if (addedToCart) {
