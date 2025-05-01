@@ -36,6 +36,7 @@ const Order = () => {
     message: "",
     price: totalAmount,
     orders: cart,
+    date: new Date().toISOString(),
   });
 
   const handleSelectChange = (event) => {
