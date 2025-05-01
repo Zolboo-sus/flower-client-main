@@ -60,7 +60,7 @@ const Product = () => {
     <div className="flex flex-col w-auto p-10 md:mx-[7vh] min-h-[77vh]">
       <div className="w-full mb-4">
         <span className="flex text-start text-[4.5vw] font-normal font-sans text-[#464441] italic md:text-[4.5vh]">
-          Birthday Bouquets
+          {data.productName} - {data.category?.catName}
         </span>
       </div>
 
