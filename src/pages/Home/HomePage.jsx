@@ -51,14 +51,14 @@ const HomePage = () => {
         <div>
           {/* Arrow buttons */}
           <button
-            onClick={() => scroll("left")}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow"
+        //    onClick={() => scroll("left")}
+        //    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow"
           >
-            <ChevronLeft />
+           <ChevronLeft />
           </button>
           <button
-            onClick={() => scroll("right")}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow"
+        //    onClick={() => scroll("right")}
+        //    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow"
           >
             <ChevronRight />
           </button>
