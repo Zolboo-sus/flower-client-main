@@ -59,8 +59,7 @@ const Product = () => {
 
     addCardToCart(newCard);
     setAddedToCart(true);
-    alert("Бүтээгдэхүүн сагсанд нэмэгдлээ.");
-  };
+   };
 
   return (
     <div className="flex flex-col w-auto p-10 md:mx-[7vh] min-h-[77vh]">
