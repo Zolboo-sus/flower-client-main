@@ -65,7 +65,7 @@ const Product = () => {
       </div>
 
       <div className="w-full flex items-start gap-6 mt-5">
-        <div className="md:w-[50%] w-auto relative">
+        <div className="md:w-[100%] w-auto relative">
           {data.productImages ? <img
             src={"https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]}
             alt="Flower"
