@@ -81,7 +81,7 @@ const Product = () => {
             Үнэ: <span className="font-semibold">{data.price}₮</span>
           </div>
 
-          <div className="w-full flex items-center gap-2 border-b border-[#d4d4d4] md:pb-5 md:text-[3vh] md:mb-[10vh]">
+          {/* <div className="w-full flex items-center gap-2 border-b border-[#d4d4d4] md:pb-5 md:text-[3vh] md:mb-[10vh]">
             <span className="drop-shadow-xl">Баглааны орц</span>
             <select name="" id="" className="text-sm md:text-[3vh] md:w-auto">
               <option value=""></option>
@@ -90,7 +90,7 @@ const Product = () => {
               <option value="">Ромашка</option>
               <option value="">Улаан сарнай</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="flex justify-between md:mt-[5vh] md:justify-start md:space-x-[10vh] gap-2">
             <div className="w-fit h-fit flex items-center gap-4 border rounded-md shadow-lg md:w-[30vh]">
