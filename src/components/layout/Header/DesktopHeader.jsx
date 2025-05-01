@@ -8,12 +8,12 @@ const DesktopHeader = () => {
 
   // Menu items array
   const menuItems = [
-    { name: "Баглаа", id: "occasion" },
-    { name: "Flowers", id: "flowers" },
-    { name: "Bouquets", id: "bouquets" },
-    { name: "Plants", id: "plants", href: "/plants" },  // Add href for the Plants link
-    { name: "Gifts", id: "gift" },
-    { name: "Sale", id: "sale" },
+    { name: "Баглаа", id: "Баглаа" },
+    { name: "Бэлэг дурсгал", id: "flowers" },
+    { name: "Таримал цэцэг", id: "bouquets" },
+  //  { name: "Plants", id: "plants", href: "/plants" },  // Add href for the Plants link
+  //  { name: "Gifts", id: "gift" },
+  //  { name: "Sale", id: "sale" },
   ];
 
   return (

@@ -30,7 +30,7 @@ const Header = () => {
         >
           &times;
         </a>
-        <a href="#occasion" onClick={closeNav}>
+        <a href="#Баглаа" onClick={closeNav}>
           Occasion
         </a>
         <a href="#flowers" onClick={closeNav}>
