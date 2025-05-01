@@ -13,6 +13,7 @@ const Order = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const { cart } = useCart();
+  const [errors, setErrors] = useState({});
 
   const totalAmount = cart.reduce(
     (acc, item) => acc + item.price * item.quality,
@@ -52,6 +53,7 @@ const Order = () => {
   };
 
   const handleSubmit = async () => {
+    const newErrors = {};
     const requiredFields = [
       "phone", "email",
       delived && "district",
@@ -75,6 +77,13 @@ const Order = () => {
       alert("Зөв имэйл хаяг оруулна уу. '@' тэмдэгт заавал байх ёстой.");
       return;
     }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+  
+    setErrors({});
   
     try {
       setIsLoading(true);
@@ -218,8 +227,12 @@ const Order = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#FFB6BA]"
+                          className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 ` +
+                          (errors.email ? 'border-red-500 focus:ring-red-300' : 'border-gray-300 focus:ring-[#FFB6BA]"
                         />
+                         {errors.email && (
+    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+  )}
                       </div>
                     </div>
                   </div>
