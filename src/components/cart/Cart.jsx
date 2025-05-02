@@ -64,7 +64,7 @@ const Cart = () => {
               </div>
 
               {/* quality Controls */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items space-x-4">
                 <button
                   onClick={() => handleDecrement(item.id, item.quality - 1)}
                   className="px-2 py-1 border border-gray-300 rounded-md hover:bg-gray-200"
