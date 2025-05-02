@@ -87,7 +87,7 @@ const HomePage = () => {
       </div>))}
       <div className="w-full mt-6 md:mt-12 flex items-end">
         <div className="w-full md:h-[18vw] flex justify-center md:items-center bg-pink-200 border-[2px] border-black rounded-lg shadow-lg">
-          <div className="w-[50%]">
+          <div className="w-full px-4 md:px-8">   
             <span className="text-[10px] sm:text-[20px] md:text-[50px] lg:text-[1.8vw] font-sans leading-0">
               <b className="md:font-semibold">“FLOWER CENTER MONGOLIA”</b> Цэцэг
               төв нь Монгол улсын анхны цэцгийн дэлгүүр болон мэндэлсэн цагаас
