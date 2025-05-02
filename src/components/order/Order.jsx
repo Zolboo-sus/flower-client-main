@@ -13,6 +13,7 @@ const Order = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const { cart } = useCart();
+  const [get, setGet] = useState(true);
 
   const totalAmount = cart.reduce(
     (acc, item) => acc + item.price * item.quality,
@@ -253,7 +254,7 @@ const Order = () => {
 
           <div className="w-full flex justify-center  gap-4 my-4">
             <button
-              onClick={() => setDeliver(false)}
+              onClick={() => setGet(true)}
               className="bg-[#b5b5b5] text-white py-2 px-4 rounded-md hover:bg-[#ff9fa5] focus:bg-[#FFB6BA] focus:outline-none"
             >
               Очиж авах
