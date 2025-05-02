@@ -86,7 +86,7 @@ const HomePage = () => {
         </div>
       </div>))}
       <div className="w-full mt-6 md:mt-12 flex items-end">
-        <div className="w-full md:h-[18vw] flex justify-center md:items-center bg-pink border-[2px] border-black rounded-lg shadow-lg">
+        <div className="w-full md:h-[18vw] flex justify-center md:items-center bg-pink-200 border-[2px] border-black rounded-lg shadow-lg">
           <div className="w-[50%]">
             <span className="text-[10px] sm:text-[20px] md:text-[50px] lg:text-[1.8vw] font-sans leading-0">
               <b className="md:font-semibold">“FLOWER CENTER MONGOLIA”</b> Цэцэг
@@ -97,14 +97,14 @@ const HomePage = () => {
           </div>
           <div className="flex w-screen justify-between absolute ">
             <img
-              src={Baantag}
-              alt=""
-              className="absolute left-0 md:left-[0.7vw] md:top-[-16vw] top-[-15vw] md:h-[32vw]"
+            //  src={Baantag}
+            //  alt=""
+            //  className="absolute left-0 md:left-[0.7vw] md:top-[-16vw] top-[-15vw] md:h-[32vw]"
             />
             <img
-              src={flower}
-              alt=""
-              className="absolute right-0 top-[-5vw] md:h-[18vw] md:top-[-9vw] md:right-[0.6vw]"
+            //  src={flower}
+            //  alt=""
+            //  className="absolute right-0 top-[-5vw] md:h-[18vw] md:top-[-9vw] md:right-[0.6vw]"
             />
           </div>
         </div>
