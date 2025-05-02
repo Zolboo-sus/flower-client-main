@@ -13,7 +13,6 @@ const Order = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const { cart } = useCart();
-  const [get, setGet] = useState(true);
 
   const totalAmount = cart.reduce(
     (acc, item) => acc + item.price * item.quality,
@@ -254,37 +253,12 @@ const Order = () => {
 
           <div className="w-full flex justify-center  gap-4 my-4">
             <button
-              onClick={() => setGet(true)}
+              onClick={() => setDeliver(false)}
               className="bg-[#b5b5b5] text-white py-2 px-4 rounded-md hover:bg-[#ff9fa5] focus:bg-[#FFB6BA] focus:outline-none"
             >
               Очиж авах
             </button>
-            
-            <div className="flex flex-col">
-                    <label className="text-sm font-medium text-gray-700">
-                      Очиж авах цаг
-                    </label>
-                    <input
-                      type="time"
-                      name="deliveryTime"
-                      value={formData.deliveryTime}
-                      onChange={handleInputChange}
-                      className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#FFB6BA]"
-                    />
-                  </div>
 
-                  <div className="flex flex-col">
-                    <label className="text-sm font-medium text-gray-700">
-                      Очиж авах өдөр
-                    </label>
-                    <input
-                      type="date"
-                      name="deliveryDate"
-                      value={formData.deliveryDate}
-                      onChange={handleInputChange}
-                      className="border shadow-lg bg-opacity-50 border-gray-600 rounded-md p-4 w-full focus:outline-none focus:ring-4 focus:ring-[#FFB6BA]"
-                    />
-                  </div>
 
             <button
               onClick={() => setDeliver(true)}
