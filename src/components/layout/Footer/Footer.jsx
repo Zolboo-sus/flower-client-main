@@ -14,19 +14,19 @@ const Footer = () => {
             <h2 className="font-medium md:text-[24px] text-[8px] text-balance ">
               Ангилал
             </h2>
-            <div className="h-full text-wrap text-[10px] flex flex-col space-y-1">
-              <a className="md:text-[20px] text-[10px]">Нүүр</a>
-              <a className="md:text-[20px] text-[10px]">Үйлчилгээний нөхцөл</a>
-              <a className="md:text-[20px] text-[10px]">Бараа буцаалт</a>
-              <a className="md:text-[20px] text-[10px]">Цэцэг арчилгаа</a>
-              <a className="md:text-[20px] text-[10px]">Бидний тухай</a>
+            <div className="h-full text-wrap text-[7px] flex flex-col space-y-1">
+              <a className="md:text-[20px] text-[7px]">Нүүр</a>
+              <a className="md:text-[20px] text-[7px]">Үйлчилгээний нөхцөл</a>
+              <a className="md:text-[20px] text-[7px]">Бараа буцаалт</a>
+              <a className="md:text-[20px] text-[7px]">Цэцэг арчилгаа</a>
+              <a className="md:text-[20px] text-[7px]">Бидний тухай</a>
             </div>
           </div>
           <div className="flex flex-col gap-2 md:w-auto w-1/3">
             <h2 className="font-medium md:text-[24px] text-[8px] text-wrap">
               Хаяг
             </h2>
-            <p className="md:text-[20px] text-[10px]">
+            <p className="md:text-[20px] text-[7px]">
               ЧД, 1-р хороо, Бага тойруу, Цэцэг төв 1 давхар
             </p>
           </div>
@@ -34,8 +34,8 @@ const Footer = () => {
             <h2 className="font-medium md:text-[24px] text-[8px] text-balance">
               Холбоо барих
             </h2>
-            <p className="md:text-[20px] text-[10px]">95515588, 99182844 </p>
-            <a className="md:text-[20px] text-[10px] ">
+            <p className="md:text-[20px] text-[7px]">95515588, 99182844 </p>
+            <a className="md:text-[20px] text-[7px] ">
               flowercentermongolia@gmail.com
             </a>
           </div>
