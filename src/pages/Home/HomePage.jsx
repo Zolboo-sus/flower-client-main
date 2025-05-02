@@ -86,7 +86,7 @@ const HomePage = () => {
         </div>
       </div>))}
       <div className="w-full mt-6 md:mt-12 flex items-end">
-        <div className="w-full md:h-[18vw] flex justify-center md:items-center bg-pink-200 rounded-lg shadow-lg">
+        <div className="w-full md:h-[18vw] flex justify-center md:items-center bg-pink border-[2px] border-black rounded-lg shadow-lg">
           <div className="w-[50%]">
             <span className="text-[10px] sm:text-[20px] md:text-[50px] lg:text-[1.8vw] font-sans leading-0">
               <b className="md:font-semibold">“FLOWER CENTER MONGOLIA”</b> Цэцэг
