@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import CardPage from './pages/Cart/Cart'
+import CardPage from "./pages/Cart/Cart";
 import Order from "./components/order/Order";
 import Product from "./pages/Product/Product";
 import Payment from "./pages/Payment/Payment";
@@ -44,11 +44,14 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/product/:id/:catid" element={<Product />} />
             <Route path="/order/:id" element={<Order />} />
             <Route path="/complete/:id" element={<Completed />} />
             <Route path="/cart" element={<CardPage />} />
-            <Route path="/payment/:invoiceId/:qr/:orderId" element={<Payment />} />
+            <Route
+              path="/payment/:invoiceId/:qr/:orderId"
+              element={<Payment />}
+            />
           </Routes>
         </Router>
         <div className="md:mt-[2%] mt-[5%] md: bottom-0 md:w-full"></div>

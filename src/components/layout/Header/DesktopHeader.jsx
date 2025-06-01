@@ -1,20 +1,22 @@
-import React, { useState } from "react";
-import { Link } from "react-scroll"; // import from react-scroll
+import React, { useEffect, useState } from "react";
+import { Link } from "react-scroll";
 import logo from "../../../assets/logo.svg";
 import { AiOutlineShopping } from "react-icons/ai";
+import axios from "axios";
 
 const DesktopHeader = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
 
-  // Menu items array
-  const menuItems = [
-    { name: "Баглаа", id: "Баглаа" },
-    { name: "Бэлэг дурсгал", id: "flowers" },
-    { name: "Таримал цэцэг", id: "bouquets" },
-  //  { name: "Plants", id: "plants", href: "/plants" },  // Add href for the Plants link
-  //  { name: "Gifts", id: "gift" },
-  //  { name: "Sale", id: "sale" },
-  ];
+  useEffect(() => {
+    if (isLoading) {
+      axios.get("https://tsetsegtuw.templateapi.xyz/categories").then((res) => {
+        setCategories(res.data.data);
+        setIsLoading(false);
+      });
+    }
+  }, [isLoading]);
 
   return (
     <div className="flex pt-8 mb-[160px] justify-between pb-5 border-b-2 border-[#ffd1d4] fixed top-0 left-0 w-full z-50 bg-white px-5">
@@ -29,32 +31,26 @@ const DesktopHeader = () => {
 
       <div className="flex flex-col items-center justify-center w-[65%] rounded-lg px-5 mr-3">
         <div className="flex w-full items-center justify-between shadow-inner-[#d3d3d3] inner-nav">
-          {menuItems.map((item, index) => (
+          {categories.map((item, index) => (
             <span
               key={index}
-              className={`text-[1.2vw] font-medium cursor-pointer px-4 py-2 text-gray-700 hover:text-[#ffd1d4] ${activeIndex === index
-                ? "underline underline-offset-4 decoration-[#ffd1d4]"
-                : ""
-                }`}
+              className={`text-[1.2vw] font-medium cursor-pointer px-4 py-2 text-gray-700 hover:text-[#ffd1d4] ${
+                activeIndex === index
+                  ? "underline underline-offset-4 decoration-[#ffd1d4]"
+                  : ""
+              }`}
               onClick={() => setActiveIndex(index)}
             >
-              {/* If the item has an href (like "Plants"), render a normal <a> tag */}
-              {item.href ? (
-                <a href={item.href} target="_blank" className="text-[1.2vw] font-medium cursor-pointer">
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  activeClass="active"
-                  to={item.id}
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={800}
-                >
-                  {item.name}
-                </Link>
-              )}
+              <Link
+                to={item._id}
+                spy={true}
+                smooth={true}
+                offset={-150}
+                duration={500}
+                className="text-[1.2vw] font-medium cursor-pointer"
+              >
+                {item.catName}
+              </Link>
             </span>
           ))}
           <a href="/cart">

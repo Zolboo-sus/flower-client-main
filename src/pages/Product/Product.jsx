@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import flower from "../../assets/flower.png";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useCart } from "../../context/CartContext"; // Import Cart Context
 
 const Product = () => {
   const [counter, setCounter] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
-  const { id } = useParams();
+  const { id, catid } = useParams();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryProducts, setCategoryProducts] = useState([]);
   const { addCardToCart, cart } = useCart();
 
   const handleIncrement = () => {
@@ -23,30 +24,34 @@ const Product = () => {
   };
 
   useEffect(() => {
-    if (isLoading) {
-      axios
-        .get(`https://tsetsegtuw.templateapi.xyz/product/id/${id}`)
-        .then((res) => setData(res.data.data))
-        .catch((er) => console.log(er))
-        .finally(() => setIsLoading(false));
-    }
+    setIsLoading(true);
+    setAddedToCart(false); // Reset cart status when product changes
+    Promise.all([
+      axios.get(`https://tsetsegtuw.templateapi.xyz/product/id/${id}`),
+      axios.get(`https://tsetsegtuw.templateapi.xyz/product?category=${catid}`),
+    ])
+      .then(([product, category]) => {
+        setData(product.data.data);
+        setCategoryProducts(category.data.data);
+      })
+      .finally(() => setIsLoading(false));
+
     if (cart) {
       if (cart.some((item) => item.id === id)) {
         setAddedToCart(true);
       }
     }
-  }, [isLoading, id, cart]);
+  }, [id, cart, catid]);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   const handleAddToCart = () => {
-
     if (addedToCart) {
       alert("Бүтээгдэхүүн аль хэдийн сагсанд хийгдсэн байна.");
       return;
-    } 
+    }
 
     const newCard = {
       id: data._id,
@@ -54,12 +59,11 @@ const Product = () => {
       price: data.price,
       quality: counter,
       image: data.productImages[0],
-
     };
 
     addCardToCart(newCard);
     setAddedToCart(true);
-   };
+  };
 
   return (
     <div className="flex flex-col w-auto p-10 md:mx-[7vh] min-h-[77vh]">
@@ -71,11 +75,15 @@ const Product = () => {
 
       <div className="w-full flex items-start gap-6 mt-5">
         <div className="md:w-[50%] w-auto relative">
-          {data.productImages ? <img
-            src={"https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]}
-            alt="Flower"
-            className="w-[25vw] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
-          /> : null}
+          {data.productImages ? (
+            <img
+              src={
+                "https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]
+              }
+              alt="Flower"
+              className="w-[25vw] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
+            />
+          ) : null}
         </div>
 
         <div className="md:w-full flex flex-col space-y-2 md:space-y-[5vh]">
@@ -119,13 +127,12 @@ const Product = () => {
             </div>
 
             <button
-  onClick={handleAddToCart}
-  className={`px-1 py-2 rounded-md shadow-lg text-sm w-[25vw] md:w-[20vh] md:text-[2.5vh] 
+              onClick={handleAddToCart}
+              className={`px-1 py-2 rounded-md shadow-lg text-sm w-[25vw] md:w-[20vh] md:text-[2.5vh] 
     ${addedToCart ? "bg-[#ffd1d4]" : "border hover:bg-gray-300"}`}
->
-  {addedToCart ? "Сагсанд хийлээ" : "Сагсанд хийх"}
-</button>
-
+            >
+              {addedToCart ? "Сагсанд хийлээ" : "Сагсанд хийх"}
+            </button>
           </div>
         </div>
       </div>
@@ -136,13 +143,27 @@ const Product = () => {
         </h1>
         <div className="w-full flex gap-4">
           <div className="flex md:w-full md:gap-10 gap-4 w-full md:justify-start overflow-x-auto">
-            <img src={flower} alt="" className="w-auto h-[11vh] md:h-[16vw]" />
-            <img src={flower} alt="" className="w-auto h-[11vh] md:h-[16vw]" />
-            <img src={flower} alt="" className="w-auto h-[11vh] md:h-[16vw]" />
-            <img src={flower} alt="" className="w-auto h-[11vh] md:h-[16vw]" />
-            <img src={flower} alt="" className="w-auto h-[11vh] md:h-[16vw]" />
-            <img src={flower} alt="" className="w-auto h-[11vh] md:h-[16vw]" />
-            <img src={flower} alt="" className="w-auto h-[11vh] md:h-[16vw]" />
+            {categoryProducts
+              .filter((el) => el._id !== id)
+              .map((el, index) => (
+                <Link
+                  to={"/product/" + el._id + "/" + catid}
+                  key={index}
+                  className="flex cursor-pointer hover:scale-105 transition-all duration-300 flex-col w-[25vw] max-md:w-[35vw] items-start gap-2 shrink-0"
+                >
+                  <img
+                    className="w-[15vw] h-[15vw] max-md:w-[45vw] max-md:h-[45vw] object-cover shadow-md rounded-md"
+                    src={
+                      el.productImages
+                        ? "https://tsetsegtuw.templateapi.xyz/" +
+                          el.productImages[0]
+                        : "no-jpg"
+                    }
+                    alt=""
+                  />
+                  <p>{Intl.NumberFormat("en-us").format(el.price)}₮</p>
+                </Link>
+              ))}
           </div>
         </div>
       </div>
