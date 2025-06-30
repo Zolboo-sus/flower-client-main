@@ -51,8 +51,15 @@ const Order = () => {
     const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
     const dd = String(tomorrow.getDate()).padStart(2, "0");
 
-    setMinDate(`${yyyy}-${mm}-${dd}`);
-  }, []); // ✅ useEffect ашиглан minDate тохируулах
+  const min = `${yyyy}-${mm}-${dd}`;
+  setMinDate(min);
+
+  // ✅ iPhone болон зарим Android дээр ажиллуулахын тулд анхны утга онооно
+  setFormData(prev => ({
+    ...prev,
+    deliveryDate: min
+  }));
+}, []);
 
   const handleSelectChange = (event) => {
     setIsIndividual(event.target.value === "Хувь хүн");
