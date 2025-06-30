@@ -127,6 +127,23 @@ const Order = () => {
   const deactive =
     "size-[45px] shadow-inner shadow-slate-300 rounded-full text-lg flex justify-center items-center";
 
+
+  // 👇 Хүргүүлэх өдөр шалгах хэсэг
+if (formData.deliveryDate) {
+  const selected = new Date(formData.deliveryDate);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  if (selected < tomorrow) {
+    alert("Хүргүүлэх огноо зөвхөн маргааш болон түүнээс хойш байх ёстой.");
+    return;
+  }
+}
+
+
   return (
     <div>
       <div className="flex justify-center items-center p-10">
