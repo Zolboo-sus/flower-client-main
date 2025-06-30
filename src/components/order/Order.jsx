@@ -99,19 +99,21 @@ const deactive =
     }
 
     // 📅 Хүргүүлэх огнооны шалгалт
-    if (formData.deliveryDate) {
-      const selected = new Date(formData.deliveryDate);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
+// ✅ deliveryDate шалгалтыг handleSubmit дотор энэ хэсэгт нэм
+if (formData.deliveryDate) {
+  const selected = new Date(formData.deliveryDate);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-      const tomorrow = new Date(today);
-      tomorrow.setDate(today.getDate() + 1);
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
 
-      if (selected < tomorrow) {
-        alert("Хүргүүлэх огноо зөвхөн маргааш болон түүнээс хойш байх ёстой.");
-        return;
-      }
-    }
+  if (selected < tomorrow) {
+    alert("Хүргүүлэх огноо зөвхөн маргааш болон түүнээс хойш байх ёстой.");
+    return;
+  }
+}
+
 
     if (!formData.email.includes("@")) {
       alert("Зөв имэйл хаяг оруулна уу. '@' тэмдэгт заавал байх ёстой.");
