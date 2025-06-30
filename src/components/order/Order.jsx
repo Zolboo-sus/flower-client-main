@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -33,11 +33,26 @@ const Order = () => {
     receiverLastName: "",
     receiverPhone: "",
     deliveryTime: "",
+    deliveryDate: "", // 👈 ensure this is included
     message: "",
     price: totalAmount,
     orders: cart,
     date: new Date().toISOString(),
   });
+
+  const [minDate, setMinDate] = useState(""); // ✅ minDate state нэмэх
+
+  useEffect(() => {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const yyyy = tomorrow.getFullYear();
+    const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
+    const dd = String(tomorrow.getDate()).padStart(2, "0");
+
+    setMinDate(`${yyyy}-${mm}-${dd}`);
+  }, []); // ✅ useEffect ашиглан minDate тохируулах
 
   const handleSelectChange = (event) => {
     setIsIndividual(event.target.value === "Хувь хүн");
@@ -52,53 +67,52 @@ const Order = () => {
   };
 
   const handleSubmit = async () => {
-  const requiredFields = [
-    "phone", "email",
-    delived && "district",
-    delived && "subdistrict",
-    delived && "address",
-    delived && "receiverName",
-    delived && "receiverLastName",
-    delived && "receiverPhone",
-    delived && "deliveryTime"
-  ].filter(Boolean);
+    const requiredFields = [
+      "phone", "email",
+      delived && "district",
+      delived && "subdistrict",
+      delived && "address",
+      delived && "receiverName",
+      delived && "receiverLastName",
+      delived && "receiverPhone",
+      delived && "deliveryTime"
+    ].filter(Boolean);
 
-  for (const field of requiredFields) {
-    if (!formData[field]) {
-      alert("Та бүх талбарыг бүрэн бөглөнө үү.");
+    for (const field of requiredFields) {
+      if (!formData[field]) {
+        alert("Та бүх талбарыг бүрэн бөглөнө үү.");
+        return;
+      }
+    }
+
+    if (!formData.email.includes("@")) {
+      alert("Зөв имэйл хаяг оруулна уу. '@' тэмдэгт заавал байх ёстой.");
       return;
     }
-  }
 
-  // 📧 Email format validation
-  if (!formData.email.includes('@')) {
-    alert("Зөв имэйл хаяг оруулна уу. '@' тэмдэгт заавал байх ёстой.");
-    return;
-  }
+    try {
+      setIsLoading(true);
 
-  try {
-    setIsLoading(true);
+      const orderRes = await axios.post('https://tsetsegtuw.templateapi.xyz/order', {
+        ...formData,
+        date: new Date().toISOString(),
+      });
 
-    const orderRes = await axios.post('https://tsetsegtuw.templateapi.xyz/order', {
-      ...formData,
-      date: new Date().toISOString(),
-    });
+      const paymentRes = await axios.post(`https://tsetsegtuw.templateapi.xyz/qpay/${id}`, {
+        orderId: orderRes.data.data._id,
+      });
 
-    const paymentRes = await axios.post(`https://tsetsegtuw.templateapi.xyz/qpay/${id}`, {
-      orderId: orderRes.data.data._id,
-    });
+      window.localStorage.setItem('qpay_urls', JSON.stringify(paymentRes.data.data.urls));
+      window.localStorage.setItem('order_info', JSON.stringify(formData));
 
-    window.localStorage.setItem('qpay_urls', JSON.stringify(paymentRes.data.data.urls));
-    window.localStorage.setItem('order_info', JSON.stringify(formData));
-
-    navigate(`/payment/${paymentRes.data.invoice.sender_invoice_id}/${paymentRes.data.data.qr_text}/${orderRes.data.data._id}`);
-  } catch (error) {
-    alert("Алдаа гарлаа. Та дахин оролдоно уу.");
-    console.error(error);
-  } finally {
-    setIsLoading(false);
-  }
-};
+      navigate(`/payment/${paymentRes.data.invoice.sender_invoice_id}/${paymentRes.data.data.qr_text}/${orderRes.data.data._id}`);
+    } catch (error) {
+      alert("Алдаа гарлаа. Та дахин оролдоно уу.");
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
 
   const active =
@@ -376,6 +390,7 @@ const Order = () => {
                       name="deliveryDate"
                       value={formData.deliveryDate}
                       onChange={handleInputChange}
+                      min={minDate}
                       className="border shadow-lg bg-opacity-50 border-gray-600 rounded-md p-4 w-full focus:outline-none focus:ring-4 focus:ring-[#FFB6BA]"
                     />
                   </div>
