@@ -354,7 +354,7 @@ const Order = () => {
                       className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#FFB6BA]"
                     />
                   </div>
-                  <div className="flex flex-col">
+                {/*  <div className="flex flex-col">
                     <label className="text-sm font-medium text-gray-700">
                       Хүргүүлэх цаг
                     </label>
@@ -365,7 +365,7 @@ const Order = () => {
                       onChange={handleInputChange}
                       className="border shadow-lg bg-opacity-25 border-gray-300 rounded-md p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#FFB6BA]"
                     />
-                  </div>
+                  </div> */}
 
                   <div className="flex flex-col">
                     <label className="text-sm font-medium text-gray-700">
