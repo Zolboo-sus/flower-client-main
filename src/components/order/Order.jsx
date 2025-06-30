@@ -108,6 +108,9 @@ if (formData.deliveryDate) {
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
 
+  console.log("Сонгосон огноо:", selected);
+  console.log("Маргааш:", tomorrow);
+
   if (selected < tomorrow) {
     alert("Хүргүүлэх огноо зөвхөн маргааш болон түүнээс хойш байх ёстой.");
     return;
