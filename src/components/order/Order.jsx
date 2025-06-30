@@ -40,6 +40,13 @@ const Order = () => {
     date: new Date().toISOString(),
   });
 
+  // Энэ хэсгийг component-ийн эхэн хэсэгт оруул (useState-уудын дараа)
+const active =
+  "size-[45px] shadow-xl rounded-full bg-[#feb6bb] text-lg flex justify-center items-center";
+const deactive =
+  "size-[45px] shadow-inner shadow-slate-300 rounded-full text-lg flex justify-center items-center";
+
+
   useEffect(() => {
     const today = new Date();
     const tomorrow = new Date(today);
