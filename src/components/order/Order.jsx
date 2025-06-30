@@ -8,7 +8,7 @@ const Order = () => {
   const [isIndividual, setIsIndividual] = useState(true);
   const [delived, setDeliver] = useState(true);
   const [Active, setActive] = useState(true);
-  const [navigater, setNavigate] = useState(false);
+  const [minDate, setMinDate] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -33,14 +33,12 @@ const Order = () => {
     receiverLastName: "",
     receiverPhone: "",
     deliveryTime: "",
-    deliveryDate: "", // 👈 ensure this is included
+    deliveryDate: "",
     message: "",
     price: totalAmount,
     orders: cart,
     date: new Date().toISOString(),
   });
-
-  const [minDate, setMinDate] = useState(""); // ✅ minDate state нэмэх
 
   useEffect(() => {
     const today = new Date();
@@ -51,15 +49,15 @@ const Order = () => {
     const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
     const dd = String(tomorrow.getDate()).padStart(2, "0");
 
-  const min = `${yyyy}-${mm}-${dd}`;
-  setMinDate(min);
+    const min = `${yyyy}-${mm}-${dd}`;
+    setMinDate(min);
 
-  // ✅ iPhone болон зарим Android дээр ажиллуулахын тулд анхны утга онооно
-  setFormData(prev => ({
-    ...prev,
-    deliveryDate: min
-  }));
-}, []);
+    // 👇 iOS дээр ажиллуулахын тулд default утга оноох
+    setFormData(prev => ({
+      ...prev,
+      deliveryDate: min
+    }));
+  }, []);
 
   const handleSelectChange = (event) => {
     setIsIndividual(event.target.value === "Хувь хүн");
@@ -74,6 +72,7 @@ const Order = () => {
   };
 
   const handleSubmit = async () => {
+    // 🚨 Шаардлагатай талбаруудын шалгалт
     const requiredFields = [
       "phone", "email",
       delived && "district",
@@ -88,6 +87,21 @@ const Order = () => {
     for (const field of requiredFields) {
       if (!formData[field]) {
         alert("Та бүх талбарыг бүрэн бөглөнө үү.");
+        return;
+      }
+    }
+
+    // 📅 Хүргүүлэх огнооны шалгалт
+    if (formData.deliveryDate) {
+      const selected = new Date(formData.deliveryDate);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+
+      if (selected < tomorrow) {
+        alert("Хүргүүлэх огноо зөвхөн маргааш болон түүнээс хойш байх ёстой.");
         return;
       }
     }
@@ -120,29 +134,6 @@ const Order = () => {
       setIsLoading(false);
     }
   };
-
-
-  const active =
-    "size-[45px] shadow-xl rounded-full bg-[#feb6bb] text-lg flex justify-center items-center";
-  const deactive =
-    "size-[45px] shadow-inner shadow-slate-300 rounded-full text-lg flex justify-center items-center";
-
-
-  // 👇 Хүргүүлэх өдөр шалгах хэсэг
-if (formData.deliveryDate) {
-  const selected = new Date(formData.deliveryDate);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate() + 1);
-
-  if (selected < tomorrow) {
-    alert("Хүргүүлэх огноо зөвхөн маргааш болон түүнээс хойш байх ёстой.");
-    return;
-  }
-}
-
 
   return (
     <div>
@@ -455,11 +446,18 @@ if (formData.deliveryDate) {
               ) : null}
             </div>
           </div>
-          <div className="w-full flex justify-end">
-            {isLoading ? <LoaderButton /> :
-              <button onClick={handleSubmit} className="w-32 flex flex-col items-center text-center font-semibold py-2 px-5 border-b-2 rounded-lg bg-[#FFB6BA]">
-                Захиалах
-              </button>}
+    <div className="flex justify-end px-8 pb-8">
+      {isLoading ? (
+        <LoaderButton />
+      ) : (
+        <button
+          type="button" // ✅ дахин ачаалал хийхгүй
+          onClick={handleSubmit}
+          className="w-32 flex flex-col items-center text-center font-semibold py-2 px-5 border-b-2 rounded-lg bg-[#FFB6BA]"
+        >
+          Захиалах
+        </button>
+      )}
           </div>
         </div>
       </div>
