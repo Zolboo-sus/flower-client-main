@@ -88,7 +88,7 @@ const deactive =
       delived && "receiverName",
       delived && "receiverLastName",
       delived && "receiverPhone",
-      delived && "deliveryTime"
+      delived && "deliveryDate"
     ].filter(Boolean);
 
     for (const field of requiredFields) {
