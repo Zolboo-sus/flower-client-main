@@ -34,7 +34,7 @@ const Footer = () => {
             <h2 className="font-medium md:text-[24px] text-[8px] text-balance">
               Холбоо барих
             </h2>
-            <p className="md:text-[20px] text-[7px]">95515588, 99182844 </p>
+            <p className="md:text-[30px] text-[10px]">95515588, 99182844 </p>
             <a className="md:text-[20px] text-[7px] ">
               flowercentermongolia@gmail.com
             </a>
@@ -46,7 +46,7 @@ const Footer = () => {
             <div className="Social_icons md:gap-2 flex md: w-full md: justify-evenly cursor-pointer">
               <a href="https://www.facebook.com/profile.php?id=100061529116836">
                 <svg
-                  className="md:size-[35px] size-[15px]"
+                  className="md:size-[70px] size-[30px]"
                   width="17"
                   height="17"
                   viewBox="0 0 17 17"
@@ -68,7 +68,7 @@ const Footer = () => {
               </a>
               <a href="https://www.instagram.com/flowercentermongolia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
                 <svg
-                  className="md:size-[35px] size-[15px]"
+                  className="md:size-[70px] size-[30px]"
                   width="16"
                   height="17"
                   viewBox="0 0 16 17"
