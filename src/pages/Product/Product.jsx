@@ -73,19 +73,7 @@ const Product = () => {
         </span>
       </div>
 
-      <div className="w-full flex items-start gap-6 mt-5">
-        <div className="md:w-[50%] w-auto relative">
-          {data.productImages ? (
-            <img
-              src={
-                "https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]
-              }
-              alt="Flower"
-              className="w-[80vw] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
-              style={{ borderRadius: "10px" }}
-            />
-          ) : null}
-        </div>
+     <div className="w-full md:w-[50%] flex flex-col items-start space-y-4">
 
         <div className="md:w-full flex flex-col space-y-2 md:space-y-[5vh]">
           <h2 className="md:w-full text-start text-[4.5vw] font-semibold md:text-[4.5vh]">
