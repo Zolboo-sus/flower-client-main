@@ -81,7 +81,7 @@ const Payment = () => {
                 <div className="">
                   <a href={e.link} className="flex flex-col">
                     {/* <p>{e.name}</p> */}
-                    <img className="h-[100px] w-[100px]" src={e.logo} alt="" />
+                    <img className="h-[70px] w-[100px]" src={e.logo} alt="" />
                   </a>
                 </div>
               ))}
