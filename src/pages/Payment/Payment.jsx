@@ -55,11 +55,11 @@ const Payment = () => {
         <div className="md:w-1/2 max-md:w-full">
           <div className="flex flex-col justify-start md:gap-3 gap-2 px-[5%]">
             <p className="md:text-[36px] text-[16px] text-left">Төлбөр төлөх</p>
-          {/*  <p className="md:text-[18px] text-[12px] text-left">
-              Дансаар шилжүүлэх
+             <p className="md:text-[18px] text-[12px] text-left">
+              Qpay
             </p>
-          </div>
-          <div className=" p-[5%] md:my-[0%] m-[5%] shadow-lg border-slate-300">
+        {/*  </div>
+            <div className=" p-[5%] md:my-[0%] m-[5%] shadow-lg border-slate-300">
             <div className="flex">
               <img src={bank} alt="" />
               <h2>Капитрон банк</h2>
@@ -81,7 +81,7 @@ const Payment = () => {
                 <div className="">
                   <a href={e.link} className="flex flex-col">
                     {/* <p>{e.name}</p> */}
-                    <img className="h-[70px] w-[100px]" src={e.logo} alt="" />
+                    <img className="h-[80px] w-[100px]" src={e.logo} alt="" />
                   </a>
                 </div>
               ))}
