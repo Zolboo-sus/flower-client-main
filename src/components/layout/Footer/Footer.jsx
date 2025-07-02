@@ -44,7 +44,7 @@ const Footer = () => {
               Social
             </h2>
             <div className="Social_icons md:gap-2 flex md: w-full md: justify-evenly cursor-pointer">
-              <a href="https://www.facebook.com/profile.php?id=100091057334970">
+              <a href="https://www.facebook.com/profile.php?id=100061529116836">
                 <svg
                   className="md:size-[35px] size-[15px]"
                   width="17"
@@ -66,7 +66,7 @@ const Footer = () => {
                   />
                 </svg>
               </a>
-              <a href="">
+              <a href="https://www.instagram.com/flowercentermongolia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
                 <svg
                   className="md:size-[35px] size-[15px]"
                   width="16"
