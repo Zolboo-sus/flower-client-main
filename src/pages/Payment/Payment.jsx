@@ -55,7 +55,7 @@ const Payment = () => {
         <div className="md:w-1/2 max-md:w-full">
           <div className="flex flex-col justify-start md:gap-3 gap-2 px-[5%]">
             <p className="md:text-[36px] text-[16px] text-left">Төлбөр төлөх</p>
-            <p className="md:text-[18px] text-[12px] text-left">
+          {/*  <p className="md:text-[18px] text-[12px] text-left">
               Дансаар шилжүүлэх
             </p>
           </div>
@@ -70,7 +70,7 @@ const Payment = () => {
               <p>
                 шилжүүлэх дүн: {Intl.NumberFormat("en-us").format(totalAmount)}₮
               </p>
-            </div>
+            </div> */}
           </div>
           <br />
           <QRCode className="max-md:h-[50vw] h-36 max-md:w-screen" value={qr} />
@@ -81,7 +81,7 @@ const Payment = () => {
                 <div className="">
                   <a href={e.link} className="flex flex-col">
                     {/* <p>{e.name}</p> */}
-                    <img className="h-[50px] w-[50px]" src={e.logo} alt="" />
+                    <img className="h-[100px] w-[100px]" src={e.logo} alt="" />
                   </a>
                 </div>
               ))}
