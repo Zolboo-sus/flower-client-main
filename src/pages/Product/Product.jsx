@@ -73,28 +73,30 @@ const Product = () => {
         </span>
       </div>
 
-      <div className="w-full flex items-start gap-6 mt-5">
-      <div className="w-full md:w-[50%] flex justify-center items-center">
-        {data.productImages && data.productImages.length > 0 ? (
-          <img
-            src={`https://tsetsegtuw.templateapi.xyz/${data.productImages[0]}`}
-            alt="Flower"
-            className="w-[80vw] max-w-[400px] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
-            style={{ borderRadius: "10px" }}
-          />
-        ) : (
-          <div className="text-gray-400">No image available</div>
-        )}
-      </div>
+<div className="w-full flex flex-col md:flex-row items-center md:items-start gap-6 mt-5">
+  {/* LEFT: Flower Image */}
+  <div className="w-full md:w-[50%] flex justify-center items-center">
+    {data.productImages && data.productImages.length > 0 ? (
+      <img
+        src={`https://tsetsegtuw.templateapi.xyz/${data.productImages[0]}`}
+        alt="Flower"
+        className="w-[80vw] max-w-[400px] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
+        style={{ borderRadius: "10px" }}
+      />
+    ) : (
+      <div className="text-gray-400">No image available</div>
+    )}
+  </div>
 
+  {/* RIGHT: Product Info */}
+  <div className="w-full md:w-[50%] flex flex-col items-start space-y-4">
+    <h2 className="text-[5vw] font-semibold md:text-[4.5vh]">
+      {data.productName}
+    </h2>
 
-        <div className="md:w-full flex flex-col space-y-2 md:space-y-[5vh]">
-          <h2 className="md:w-full text-start text-[4.5vw] font-semibold md:text-[4.5vh]">
-            {data.productName}
-          </h2>
-          <div className="w-full text-start text-lg text-gray-600 border-b border-[#d4d4d4] md:text-[3vh] md:pb-5">
-            Үнэ: <span className="font-semibold">{data.price}₮</span>
-          </div>
+    <div className="text-lg text-gray-600 border-b border-[#d4d4d4] pb-2 md:text-[3vh] md:pb-5">
+      Үнэ: <span className="font-semibold">{data.price}₮</span>
+    </div>
 
           {/* <div className="w-full flex items-center gap-2 border-b border-[#d4d4d4] md:pb-5 md:text-[3vh] md:mb-[10vh]">
             <span className="drop-shadow-xl">Баглааны орц</span>
@@ -107,37 +109,37 @@ const Product = () => {
             </select>
           </div> */}
 
-          <div className="flex justify-between md:mt-[5vh] md:justify-start md:space-x-[10vh] gap-2">
-            <div className="w-fit h-fit flex items-center gap-4 border rounded-md shadow-lg md:w-[30vh]">
-              <button
-                type="button"
-                className="text-xl font-bold px-2 hover:bg-gray-300 border-r md:text-[4.5vh] md:w-full md:font-normal text-gray-400 md:h-full"
-                onClick={handleDecrement}
-              >
-                -
-              </button>
-              <span className="md:text-[3.5vh] md:w-full md:h-full md:font-normal">
-                {counter}
-              </span>
-              <button
-                type="button"
-                className="text-xl font-bold px-2 hover:bg-gray-300 border-l md:text-[4.5vh] md:w-full md:font-normal md:h-full"
-                onClick={handleIncrement}
-              >
-                +
-              </button>
-            </div>
-
-            <button
-              onClick={handleAddToCart}
-              className={`px-1 py-2 rounded-md shadow-lg text-sm w-[25vw] md:w-[20vh] md:text-[2.5vh] 
-    ${addedToCart ? "bg-[#ffd1d4]" : "border hover:bg-gray-300"}`}
-            >
-              {addedToCart ? "Сагсанд хийлээ" : "Сагсанд хийх"}
-            </button>
-          </div>
-        </div>
+<div className="flex justify-between w-full md:justify-start md:space-x-[10vh] gap-2 mt-4">
+      {/* Quantity Control */}
+      <div className="w-fit h-fit flex items-center gap-4 border rounded-md shadow-lg md:w-[30vh]">
+        <button
+          type="button"
+          className="text-xl font-bold px-2 hover:bg-gray-300 border-r md:text-[4.5vh] text-gray-400"
+          onClick={handleDecrement}
+        >
+          -
+        </button>
+        <span className="md:text-[3.5vh]">{counter}</span>
+        <button
+          type="button"
+          className="text-xl font-bold px-2 hover:bg-gray-300 border-l md:text-[4.5vh]"
+          onClick={handleIncrement}
+        >
+          +
+        </button>
       </div>
+
+      {/* Add to Cart Button */}
+      <button
+        onClick={handleAddToCart}
+        className={`px-2 py-2 rounded-md shadow-lg text-sm w-[40vw] md:w-[20vh] md:text-[2.5vh]
+          ${addedToCart ? "bg-[#ffd1d4]" : "border hover:bg-gray-300"}`}
+      >
+        {addedToCart ? "Сагсанд хийлээ" : "Сагсанд хийх"}
+      </button>
+    </div>
+  </div>
+</div>
 
       <div className="mt-8 md:space-y-20">
         <h1 className="text-lg drop-shadow-lg mb-4 font-normal font-sans md:text-[3vh]">
