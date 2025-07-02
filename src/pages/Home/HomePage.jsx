@@ -16,8 +16,8 @@ const HomePage = () => {
   useEffect(() => {
     if (isLoading) {
       Promise.all([
-        axios.get("https://tsetsegtuw.templateapi.xyz/categories"),
-        axios.get("https://tsetsegtuw.templateapi.xyz/product"),
+        axios.get("https://tsetsegtuw.templateapi.xyz/categories?_t=${Date.now()}`"),
+        axios.get("https://tsetsegtuw.templateapi.xyz/product?_t=${Date.now()}"),
       ])
         .then(([category, product]) => {
           setCategories(category.data.data);
