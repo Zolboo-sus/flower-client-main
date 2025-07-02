@@ -45,53 +45,56 @@ const Cart = () => {
 
       {cart && cart.length > 0 ? (
         <div className="space-y-6">
-          {cart.map((item) => (
-            <div
-              key={item.id}
-              className="flex items-center justify-between p-4 border-b border-gray-300"
-            >
-              {/* Product Info */}
-              <div className="flex items-center space-x-4">
-                <img
-                  src={'https://tsetsegtuw.templateapi.xyz/' + item.image}
-                  alt={item.productName}
-                  className="w-20 h-20 object-cover rounded-md shadow-md"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold">{item.name}</h3>
-                  <p className="text-gray-500">{item.price}₮</p>
+        {cart.map((item) => (
+          <div
+            key={item.id}
+            className="flex items-start justify-between p-4 border-b border-gray-300 gap-3"
+          >
+            {/* Left: Image */}
+            <img
+              src={'https://tsetsegtuw.templateapi.xyz/' + item.image}
+              alt={item.name}
+              className="w-20 h-20 object-cover rounded-md shadow-md"
+            />
+
+            {/* Right: Text + controls */}
+            <div className="flex flex-col flex-grow">
+              <h3 className="text-base font-semibold mb-1">{item.name}</h3>
+
+              <div className="flex items-center gap-3 mb-1">
+                {/* Quantity controls */}
+                <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
+                  <button
+                    onClick={() => handleDecrement(item.id, item.quality - 1)}
+                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200"
+                  >
+                    −
+                  </button>
+                  <span className="px-4 py-1">{item.quality}</span>
+                  <button
+                    onClick={() => handleIncrement(item.id, item.quality + 1)}
+                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200"
+                  >
+                    +
+                  </button>
+                </div>
+
+                {/* Price */}
+                <div className="text-sm font-semibold">
+                  {Intl.NumberFormat("en-us").format(item.price * item.quality)}₮
                 </div>
               </div>
 
-              {/* quality Controls */}
-              <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
-                <button
-                  onClick={() => handleDecrement(item.id, item.quality - 1)}
-                  className="px-3 py-1 bg-gray-100 hover:bg-gray-200"
-                >
-                  -
-                </button>
-                <span className="px-4 py-1">{item.quality}</span>
-                <button
-                  onClick={() => handleIncrement(item.id, item.quality + 1)}
-                  className="px-3 py-1 bg-gray-100 hover:bg-gray-200"
-                >
-                  +
-                </button>
-              </div>
-              {/* Product Total */}
-              <div className="text-lg font-semibold">
-                {Intl.NumberFormat('en-us').format(item.price * item.quality)}₮
-              </div>
-
+              {/* Remove button */}
               <button
                 onClick={() => removeFromCart(item.id)}
-                className="px-4 py-2 text-red-500 hover:text-red-700"
+                className="text-sm text-red-500 hover:text-red-700"
               >
                 Хасах
               </button>
             </div>
-          ))}
+          </div>
+        ))}
 
           <div className="flex justify-between items-center border-t border-gray-300 pt-4 mt-6">
             <h3 className="text-xl font-bold">Нийт:</h3>
