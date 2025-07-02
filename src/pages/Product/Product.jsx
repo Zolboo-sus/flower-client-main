@@ -74,13 +74,17 @@ const Product = () => {
       </div>
 
       <div className="w-full flex items-start gap-6 mt-5">
-      <div className="w-full md:w-[50%] flex justify-center">
-        <img
-          src={"https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]}
-          alt="Flower"
-          className="w-[80vw] max-w-[400px] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
-          style={{ borderRadius: "10px" }}
-        />
+      <div className="w-full md:w-[50%] flex justify-center items-center">
+        {data.productImages && data.productImages.length > 0 ? (
+          <img
+            src={`https://tsetsegtuw.templateapi.xyz/${data.productImages[0]}`}
+            alt="Flower"
+            className="w-[80vw] max-w-[400px] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
+            style={{ borderRadius: "10px" }}
+          />
+        ) : (
+          <div className="text-gray-400">No image available</div>
+        )}
       </div>
 
 
