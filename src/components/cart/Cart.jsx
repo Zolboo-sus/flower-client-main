@@ -80,7 +80,7 @@ const Cart = () => {
                 </div>
 
                 {/* Price */}
-                <div className="text-sm font-semibold">
+                <div className="text-lg font-bold text-gray-800">
                   {Intl.NumberFormat("en-us").format(item.price * item.quality)}₮
                 </div>
               </div>
