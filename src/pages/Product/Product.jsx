@@ -81,7 +81,8 @@ const Product = () => {
                 "https://tsetsegtuw.templateapi.xyz/" + data.productImages[0]
               }
               alt="Flower"
-              className="w-[40vw] h-auto md:w-[60vh] md:h-[70vh] object-cover shadow-xl"
+              className="w-[80vw] h-auto md:w-[50vh] md:h-[60vh] object-cover shadow-xl"
+              style={{ borderRadius: "10px" }}
             />
           ) : null}
         </div>
