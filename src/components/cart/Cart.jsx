@@ -64,24 +64,21 @@ const Cart = () => {
               </div>
 
               {/* quality Controls */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
                 <button
                   onClick={() => handleDecrement(item.id, item.quality - 1)}
-                  className="px-2 py-1 border border-gray-300 rounded-md hover:bg-gray-200"
+                  className="px-3 py-1 bg-gray-100 hover:bg-gray-200"
                 >
                   -
                 </button>
-                <span className="px-4 py-2 border border-gray-300 rounded-md">
-                  {item.quality}
-                </span>
+                <span className="px-4 py-1">{item.quality}</span>
                 <button
                   onClick={() => handleIncrement(item.id, item.quality + 1)}
-                  className="px-2 py-1 border border-gray-300 rounded-md hover:bg-gray-200"
+                  className="px-3 py-1 bg-gray-100 hover:bg-gray-200"
                 >
                   +
                 </button>
               </div>
-
               {/* Product Total */}
               <div className="text-lg font-semibold">
                 {Intl.NumberFormat('en-us').format(item.price * item.quality)}₮

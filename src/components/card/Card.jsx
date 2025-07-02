@@ -38,20 +38,18 @@ export default function Card() {
           <div className="flex flex-col text-[14px] align-center">
             <div className="flex items-center justify-end gap-3">
               <span className="text-[12px] font-semibold">{count}₮</span>
-              <div className="counters flex items-center gap-1">
+              <div className="flex items-center border border-gray-300 rounded-md overflow-hidden text-[12px]">
                 <button
-                  type="button"
-                  className="px-1 text-[10px] border-2 border-slate-200 active:bg-slate-300"
-                  onClick={decrementCounter}>
-                  -
+                  className="px-2 py-1 bg-gray-100 hover:bg-gray-200"
+                  onClick={decrementCounter}
+                >
+                  −
                 </button>
-                <span className="border-2 px-2 text-[10px] flex items-center justify-center">
-                  {counter}
-                </span>
+                <span className="px-3 py-1">{counter}</span>
                 <button
-                  type="button"
-                  className="px-1 text-[10px] border-2 border-slate-200 active:bg-slate-300"
-                  onClick={incrementCounter}>
+                  className="px-2 py-1 bg-gray-100 hover:bg-gray-200"
+                  onClick={incrementCounter}
+                >
                   +
                 </button>
               </div>
