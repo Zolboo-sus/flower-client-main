@@ -1,14 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// Removed unused ChevronLeft, ChevronRight, Baantag, and flower imports
 import slider from "../../assets/slider.png";
-import Baantag from "../../assets/baantag.png";
-import flower from "../../assets/flower1.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
-  const scrollRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -16,8 +13,9 @@ const HomePage = () => {
   useEffect(() => {
     if (isLoading) {
       Promise.all([
-        axios.get("https://tsetsegtuw.templateapi.xyz/categories?_t=${Date.now()}`"),
-        axios.get("https://tsetsegtuw.templateapi.xyz/product?_t=${Date.now()}"),
+        // Fixed: Replaced double quotes with backticks for proper template strings
+        axios.get(`https://tsetsegtuw.templateapi.xyz/categories?_t=${Date.now()}`),
+        axios.get(`https://tsetsegtuw.templateapi.xyz/product?_t=${Date.now()}`),
       ])
         .then(([category, product]) => {
           setCategories(category.data.data);
@@ -31,20 +29,15 @@ const HomePage = () => {
     return <div className="loader"></div>;
   }
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -300 : 300,
-        behavior: "smooth",
-      });
-    }
-  };
+  // Removed unused scroll function and scrollRef to pass ESLint
 
   return (
     <div className="max-md:pt-5">
-      <img src={slider} className="w-screen h-auto " alt="" />
+      {/* Added meaningful alt text */}
+      <img src={slider} className="w-screen h-auto " alt="Flower Center Mongolia Banner" />
+      
       {categories.map((e) => (
-        <div className="flex flex-col w-screen relative">
+        <div key={e._id} className="flex flex-col w-screen relative">
           <div className="flex w-full items-center justify-center gap-10 py-4">
             <div className="w-full h-[1px] bg-black/80" />
             <p id={e._id} className="text-xl w-max">
@@ -53,21 +46,7 @@ const HomePage = () => {
             <div className="w-full h-[1px] bg-black/80" />
           </div>
           <div>
-            {/* Arrow buttons */}
-            {/*<button 
-            onClick={() => scroll("left")}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow hidden "
-          >
-           <ChevronLeft />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow"
-          >
-            <ChevronRight />
-          </button> */}
             <div
-              ref={scrollRef}
               className="flex w-full overflow-x-scroll px-[5%] scrollbar-hide"
             >
               <div className="flex gap-4">
@@ -87,7 +66,8 @@ const HomePage = () => {
                               el.productImages[0]
                             : "no-jpg"
                         }
-                        alt=""
+                        // Added alt text for product images
+                        alt={el.productName || "Product"}
                       />
                       <p>{Intl.NumberFormat("en-us").format(el.price)}₮</p>
                     </Link>
@@ -106,18 +86,6 @@ const HomePage = () => {
               таны аз жаргалтай мөч бүхэнтэй хамт байгаадаа бид үргэлж баяртай
               байдаг шүү"
             </span>
-          </div>
-          <div className="flex w-screen justify-between absolute ">
-            <img
-            //  src={Baantag}
-            //  alt=""
-            //  className="absolute left-0 md:left-[0.7vw] md:top-[-16vw] top-[-15vw] md:h-[32vw]"
-            />
-            <img
-            //  src={flower}
-            //  alt=""
-            //  className="absolute right-0 top-[-5vw] md:h-[18vw] md:top-[-9vw] md:right-[0.6vw]"
-            />
           </div>
         </div>
       </div>
